@@ -1,18 +1,18 @@
 from turtle import Turtle
-STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
+STARTING_POSITIONS = [(280, 20), (280, 0), (280, -20)]
 UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
 
 
-class Snake:
+class Paddle1:
     def __init__(self):
         self.snake = []
-        self.create_snake()
+        self.create_pad1()
         self.head = self.snake[0]
 
-    def create_snake(self):
+    def create_pad1(self):
         for position in STARTING_POSITIONS:
             self.add_segment(position)
 
