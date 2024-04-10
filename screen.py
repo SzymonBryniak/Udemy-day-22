@@ -8,7 +8,7 @@ screen = Screen()
 
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
-screen.tracer(0)
+
 middle.hideturtle()
 middle.color('green')
 middle.setpos(x=0, y=300)
@@ -16,8 +16,8 @@ middle.setpos(x=0, y=300)
 middle.goto(x=0, y=-300)
 pad1 = Paddle1()
 pad2 = Paddle2()
-ball1 = Ball()
 
+ball = Ball()
 
 screen.exitonclick()
 
