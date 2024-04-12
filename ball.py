@@ -5,9 +5,8 @@ STARTING_POSITION = (0,0)
 
 class Ball:
     def __init__(self):
-        self.ball = []
         self.create_ball()
-        self.turtle = Turtle
+        self.ball = []
 
 
     def create_ball(self):

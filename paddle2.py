@@ -8,8 +8,9 @@ RIGHT = 0
 
 class Paddle2:
     def __init__(self):
-        self.pad = []
+        self.snake = []
         self.create_pad2()
+        self.head = self.snake[0]
 
     def create_pad2(self):
         for position in STARTING_POSITIONS:
@@ -20,4 +21,4 @@ class Paddle2:
         new_segment.color('green')
         new_segment.penup()
         new_segment.goto(position)
-        self.pad.append(new_segment)
+        self.snake.append(new_segment)
