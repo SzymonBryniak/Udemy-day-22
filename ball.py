@@ -5,9 +5,12 @@ STARTING_POSITION = (0,0)
 
 class Ball:
     def __init__(self):
-        self.create_ball()
         self.ball = []
-
+        self.create_ball()
+        self.turtle = Turtle
+        self.game_on = True
+        #self.dict_to = {'left_x': random.randint(-300, 0),
+                        #'left_y': random.randint(0, -300)}
 
     def create_ball(self):
         new_segment = Turtle('circle')
@@ -16,3 +19,29 @@ class Ball:
         new_segment.goto(x=0, y=0)
         self.ball.append(new_segment)
 
+    def ball_start(self):
+        direction = random.randint(1, 4)
+        if direction == 1:
+            self.bottom_left()
+        elif direction == 2:
+            self.bottom_right()
+        elif direction == 3:
+            self.top_left()
+        elif direction == 4:
+            self.top_right()
+
+    def bottom_left(self):
+        left_y = random.randint(-300, 0)
+        self.ball[0].goto(x=-300, y=left_y)
+
+    def top_left(self):
+        right_y = random.randint(0, 300)
+        self.ball[0].goto(x=-300, y=right_y)
+
+    def top_right(self):
+        left_y = random.randint(0, 300)
+        self.ball[0].goto(x=300, y=left_y)
+
+    def bottom_right(self):
+        right_y = random.randint(-300, 0)
+        self.ball[0].goto(x=300, y=right_y)
