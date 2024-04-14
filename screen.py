@@ -20,5 +20,21 @@ pad2 = Paddle2()
 ball = Ball()
 ball.ball_start()
 
+
+screen.listen()
+screen.onkeypress(pad1.up, "Up")
+screen.onkeypress(pad1.down, "Down")
+screen.onkeypress(pad2.up, "w")
+screen.onkeypress(pad2.down, "s")
+
 screen.exitonclick()
 
+'''
+screen.listen()
+screen.onkey(pad1.up, "Up")
+screen.onkey(pad1.down, "Down")
+
+
+
+
+'''

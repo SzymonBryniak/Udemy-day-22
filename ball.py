@@ -5,6 +5,8 @@ STARTING_POSITION = (0,0)
 
 class Ball:
     def __init__(self):
+        self.ball_x = 0
+        self.ball_y = 0
         self.ball = []
         self.create_ball()
         self.turtle = Turtle
@@ -29,19 +31,21 @@ class Ball:
             self.top_left()
         elif direction == 4:
             self.top_right()
+        self.ball_x = self.ball[0].xcor()
+        self.ball_y = self.ball[0].ycor()
 
     def bottom_left(self):
         left_y = random.randint(-300, 0)
-        self.ball[0].goto(x=-300, y=left_y)
+        self.ball[0].goto(x=-260, y=left_y)
 
     def top_left(self):
         right_y = random.randint(0, 300)
-        self.ball[0].goto(x=-300, y=right_y)
+        self.ball[0].goto(x=-260, y=right_y)
 
     def top_right(self):
         left_y = random.randint(0, 300)
-        self.ball[0].goto(x=300, y=left_y)
+        self.ball[0].goto(x=260, y=left_y)
 
     def bottom_right(self):
         right_y = random.randint(-300, 0)
-        self.ball[0].goto(x=300, y=right_y)
+        self.ball[0].goto(x=260, y=right_y)
