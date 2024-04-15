@@ -2,7 +2,7 @@ from turtle import Screen, Turtle
 from paddle1 import Paddle1
 from paddle2 import Paddle2
 from ball import Ball
-
+from paddle_collision import PadCollision
 middle = Turtle()
 screen = Screen()
 
@@ -26,7 +26,7 @@ screen.onkeypress(pad1.up, "Up")
 screen.onkeypress(pad1.down, "Down")
 screen.onkeypress(pad2.up, "w")
 screen.onkeypress(pad2.down, "s")
-
+pad_col = PadCollision()
 screen.exitonclick()
 
 '''

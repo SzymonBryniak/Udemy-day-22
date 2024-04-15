@@ -10,12 +10,12 @@ FORWARD = 60
 
 class Paddle1:
     def __init__(self):
-        self.ux = 0
-        self.uy = 0
-        self.dx = 0
-        self.dy = 0
+        self.p1ux = 0
+        self.p1uy = 0
+        self.p1dx = 0
+        self.p1dy = 0
         self.screen = Screen()
-        self.pad = []
+        self.pad1 = []
         self.create_pad1()
 
     def create_pad1(self):
@@ -27,33 +27,33 @@ class Paddle1:
         new_segment.color('green')
         new_segment.penup()
         new_segment.goto(position)
-        self.pad.append(new_segment)
+        self.pad1.append(new_segment)
 
     def up(self):
         self.screen.tracer(0)
-        self.pad[0].setheading(UP)
-        self.pad[0].forward(FORWARD)
-        self.pad[1].setheading(UP)
-        self.pad[1].forward(FORWARD)
-        self.pad[2].setheading(UP)
-        self.pad[2].forward(FORWARD)
+        self.pad1[0].setheading(UP)
+        self.pad1[0].forward(FORWARD)
+        self.pad1[1].setheading(UP)
+        self.pad1[1].forward(FORWARD)
+        self.pad1[2].setheading(UP)
+        self.pad1[2].forward(FORWARD)
         self.screen.update()
-        self.ux = self.pad[0].xcor()
-        self.uy = self.pad[0].ycor()
-        print(self.ux, self.uy)
+        self.p1ux = self.pad1[0].xcor()
+        self.p1uy = self.pad1[0].ycor()
+        print(self.p1ux, self.p1uy)
 
     def down(self):
         self.screen.tracer(0)
-        self.pad[0].setheading(DOWN)
-        self.pad[0].forward(FORWARD)
-        self.pad[1].setheading(DOWN)
-        self.pad[1].forward(FORWARD)
-        self.pad[2].setheading(DOWN)
-        self.pad[2].forward(FORWARD)
+        self.pad1[0].setheading(DOWN)
+        self.pad1[0].forward(FORWARD)
+        self.pad1[1].setheading(DOWN)
+        self.pad1[1].forward(FORWARD)
+        self.pad1[2].setheading(DOWN)
+        self.pad1[2].forward(FORWARD)
         self.screen.update()
-        self.dx = self.pad[0].xcor()
-        self.dy = self.pad[0].ycor()
-        print(self.dx, self.dy)
+        self.p1dx = self.pad1[0].xcor()
+        self.p1dy = self.pad1[0].ycor()
+        print(self.p1dx, self.p1dy)
 
 
 
