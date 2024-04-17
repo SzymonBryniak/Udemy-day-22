@@ -3,14 +3,14 @@ from paddle2 import Paddle2
 from ball import Ball
 
 
-class PadCollision(Ball):
+class PadCollision:
 
     def __int__(self):
-        super().__init__()
-        self.pad_collision()
+        self.cor = 0
 
-    def pad_collision(self):
-        print(self.ball_coordinates())
+    def pad_collision(self, ball_coordinate,):
+
+        print(ball_coordinate)
 
 
 

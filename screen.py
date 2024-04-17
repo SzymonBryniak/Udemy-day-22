@@ -16,25 +16,25 @@ middle.setpos(x=0, y=300)
 middle.goto(x=0, y=-300)
 pad1 = Paddle1()
 pad2 = Paddle2()
-
-ball = Ball()
-ball.ball_start()
-
-
 screen.listen()
+ball = Ball()
+
+ball.create_ball()
+coordinate = ball.top_left()
+pad_col = PadCollision()
+pad_col.pad_collision(coordinate)
+
+
 screen.onkeypress(pad1.up, "Up")
 screen.onkeypress(pad1.down, "Down")
 screen.onkeypress(pad2.up, "w")
 screen.onkeypress(pad2.down, "s")
-pad_col = PadCollision()
+
+
 screen.exitonclick()
 
 '''
 screen.listen()
 screen.onkey(pad1.up, "Up")
 screen.onkey(pad1.down, "Down")
-
-
-
-
 '''
