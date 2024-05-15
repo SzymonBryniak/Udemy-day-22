@@ -10,7 +10,7 @@ class PadCollision:
 
     def pad_collision(self, ball_coordinate,):
 
-        print(ball_coordinate)
+        return
 
 
 
