@@ -28,12 +28,15 @@ from paddle2 import Paddle2
 from ball import Ball
 import threading
 from paddle_collision import PadCollision
+
+
 class ScreenAnimator(threading.Thread):
     def __init__(self, thread):
         threading.Thread.__init__(self)
         self.t1 = thread
 
     def run(self):
+        return
 
 
 middle = Turtle()
