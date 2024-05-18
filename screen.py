@@ -6,11 +6,6 @@ from paddle_collision import PadCollision
 import threading
 middle = Turtle()
 screen = Screen()
-
-
-ball = Ball()
-
-ball.create_ball()
 ################
 
 screen.setup(width=600, height=600)
@@ -27,13 +22,11 @@ screen.onkeypress(pad1.up, "Up")
 screen.onkeypress(pad1.down, "Down")
 screen.onkeypress(pad2.up, "w")
 screen.onkeypress(pad2.down, "s")
-
-
-ball.top_left()
 pad_col = PadCollision()
 # pad_col.pad_collision(coordinate)
 
-
+ball = Ball()
+ball.forward_ball()
 screen.exitonclick()
 
 '''

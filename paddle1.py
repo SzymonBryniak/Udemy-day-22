@@ -1,5 +1,5 @@
 from turtle import Turtle, Screen
-import threading
+
 STARTING_POSITIONS = [(280, 20), (280, 0), (280, -20)]
 UP = 90
 DOWN = 270
@@ -15,6 +15,7 @@ class Paddle1:
         self.p1dx = 0
         self.p1dy = 0
         self.screen = Screen()
+        self.screen.listen()
         self.pad1 = []
         self.create_pad1()
 
