@@ -20,9 +20,9 @@ class Ball:
         new_segment.penup()
         new_segment.goto(x=0, y=0)
         self.ball.append(new_segment)
+        self.top_left()
 
     def forward_ball(self):
-
         self.ball[0].forward(200)
 
     def ball_start(self):

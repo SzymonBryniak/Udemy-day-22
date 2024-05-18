@@ -14,10 +14,12 @@ class Paddle1:
         self.p1uy = 0
         self.p1dx = 0
         self.p1dy = 0
-        self.screen = Screen()
-        self.screen.listen()
         self.pad1 = []
         self.create_pad1()
+        self.screen = Screen()
+        self.screen.listen()
+        self.screen.onkeypress(self.up, "Up")
+        self.screen.onkeypress(self.down, "Down")
 
     def create_pad1(self):
         for position in STARTING_POSITIONS:
