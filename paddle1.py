@@ -1,5 +1,5 @@
 from turtle import Turtle, Screen
-
+import threading
 STARTING_POSITIONS = [(280, 20), (280, 0), (280, -20)]
 UP = 90
 DOWN = 270

@@ -1,4 +1,5 @@
 import random
+import threading
 from turtle import Turtle
 
 STARTING_POSITION = (0, 0)
@@ -6,6 +7,7 @@ STARTING_POSITION = (0, 0)
 
 class Ball:
     def __init__(self):
+        threading.Thread.__init__(self)
         self.ball_x = 0
         self.ball_y = 0
         self.ball = []
@@ -13,13 +15,12 @@ class Ball:
 
         #self.dict_to = {'left_x': random.randint(-300, 0),
                         #'left_y': random.randint(0, -300)}
-
     def create_ball(self):
         new_segment = Turtle('circle')
         new_segment.color('green')
         new_segment.penup()
         new_segment.goto(x=0, y=0)
-        self.ball.append(new_segment)
+        self.ball.append(threading.Thread(target=new_segment))
 
     def ball_start(self):
         self.create_ball()
