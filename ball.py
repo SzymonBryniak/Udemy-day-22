@@ -4,11 +4,8 @@ from turtle import Turtle
 import threading
 STARTING_POSITION = (0, 0)
 
-
-class Ball(threading.Thread):
+class Ball:
     def __init__(self):
-        threading.Thread.__init__(self)
-        self.start()
         self.ball_x = 0
         self.ball_y = 0
         self.ball = []

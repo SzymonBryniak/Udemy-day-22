@@ -15,3 +15,4 @@ class Wall(Paddle1, Paddle2, Ball):
         pass
 
 
+
