@@ -1,11 +1,14 @@
 import random
 import threading
 from turtle import Turtle
+import threading
 STARTING_POSITION = (0, 0)
 
 
-class Ball:
+class Ball(threading.Thread):
     def __init__(self):
+        threading.Thread.__init__(self)
+        self.start()
         self.ball_x = 0
         self.ball_y = 0
         self.ball = []
@@ -20,7 +23,7 @@ class Ball:
         new_segment.penup()
         new_segment.goto(x=0, y=0)
         self.ball.append(new_segment)
-        self.top_left()
+        self.top_right()
 
     def forward_ball(self):
         self.ball[0].forward(200)
@@ -45,6 +48,7 @@ class Ball:
         return [-260, int(left_y)]
 
     def top_left(self):
+
         angle = random.randint(145, 180)
         #self.ball[0].goto(x=-260, y=right_y)
         ball_x = 0
@@ -59,6 +63,7 @@ class Ball:
 
     def top_right(self):
         left_y = random.randint(0, 300)
+        self.ball[0]._delay(150)
         self.ball[0].goto(x=260, y=left_y)
 
         return [260, int(left_y)]

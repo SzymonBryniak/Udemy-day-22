@@ -26,17 +26,18 @@ from turtle import Screen, Turtle
 from paddle1 import Paddle1
 from paddle2 import Paddle2
 from ball import Ball
-import threading
+# import threading
 from paddle_collision import PadCollision
 
 
-class ScreenAnimator(threading.Thread):
-    def __init__(self, thread):
-        threading.Thread.__init__(self)
-        self.t1 = thread
-
-    def run(self):
-        return
+# class ScreenAnimator(threading.Thread):
+#     def __init__(self, thread_id, name):
+#         threading.Thread.__init__(self)
+#         self.t1 = name
+#         self.thread_id = thread_id
+#
+#     def run(self):
+#         return
 
 
 middle = Turtle()
@@ -48,7 +49,10 @@ middle.hideturtle()
 middle.color('green')
 middle.setpos(x=0, y=300)
 middle.goto(x=0, y=-300)
+
 pad1 = Paddle1()
 pad2 = Paddle2()
 ball = Ball()
+
+
 screen.exitonclick()
