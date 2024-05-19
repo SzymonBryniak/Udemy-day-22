@@ -17,9 +17,9 @@ class Paddle2:
         self.pad2 = []
         self.create_pad2()
         self.screen = Screen()
-        self.screen.listen()
-        self.screen.onkeypress(self.up, "w")
-        self.screen.onkeypress(self.down, "s")
+        # self.screen.listen()
+        # self.screen.onkeypress(self.up, "w")
+        # self.screen.onkeypress(self.down, "s")
 
     def create_pad2(self):
         for position in STARTING_POSITIONS:

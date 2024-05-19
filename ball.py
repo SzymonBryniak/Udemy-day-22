@@ -4,6 +4,7 @@ from turtle import Turtle
 import threading
 STARTING_POSITION = (0, 0)
 
+
 class Ball:
     def __init__(self):
         self.ball_x = 0
@@ -20,7 +21,7 @@ class Ball:
         new_segment.penup()
         new_segment.goto(x=0, y=0)
         self.ball.append(new_segment)
-        self.top_right()
+        self.top_left()
 
     def forward_ball(self):
         self.ball[0].forward(200)
