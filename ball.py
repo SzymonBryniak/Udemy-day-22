@@ -1,6 +1,6 @@
 import random
 import threading
-from turtle import Turtle
+from turtle import Turtle, Screen
 import threading
 STARTING_POSITION = (0, 0)
 
@@ -11,6 +11,8 @@ class Ball:
         self.ball_y = 0
         self.ball = []
         self.create_ball()
+        self.screen = Screen()
+        # screen.ontimer(self.move_ball, 10)  # Start the ball movement
         self.game_on = True
 
         #self.dict_to = {'left_x': random.randint(-300, 0),
@@ -21,7 +23,7 @@ class Ball:
         new_segment.penup()
         new_segment.goto(x=0, y=0)
         self.ball.append(new_segment)
-        self.top_left()
+        self.screen.ontimer(self.top_left())
 
     def forward_ball(self):
         self.ball[0].forward(200)

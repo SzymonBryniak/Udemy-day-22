@@ -28,16 +28,21 @@ from ball import Ball
 import multiprocessing
 from paddle_collision import PadCollision
 
+listening = False
 
-class MainScreen(Screen, Turtle, Ball):
+
+class MainScreen:
     def __int__(self):
         self.screen = Screen()
         self.middle = Turtle()
+        self.pad1 = Paddle1()
+        self.pad2 = Paddle2()
+
         # Paddle1.__init__(self)
         # Paddle2.__init__(self)
         # Ball.__init__(self)
 
-    def screen(self):
+    def screen_on(self):
         self.screen.setup(width=600, height=600)
         self.screen.bgcolor("black")
         self.middle.hideturtle()
@@ -45,11 +50,13 @@ class MainScreen(Screen, Turtle, Ball):
         self.middle.setpos(x=0, y=300)
         self.middle.goto(x=0, y=-300)
         self.screen.exitonclick()
+        # self.pad1 = Paddle1()
+        # self.pad2 = Paddle2()
+        # self.ball = Ball()
 
 
-MainScreen()
-
-
+display_screen = MainScreen()
+display_screen.screen_on()
 
 
 # if __name__ == '__main__':

@@ -1,28 +1,37 @@
 from turtle import Screen, Turtle
 from paddle1 import Paddle1
 from paddle2 import Paddle2
-from ball import Ball
+import ball
+import threading
 from paddle_collision import PadCollision
 import threading
+
+
 middle = Turtle()
 screen = Screen()
 ################
 
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
-
 middle.hideturtle()
 middle.color('green')
 middle.setpos(x=0, y=300)
 middle.goto(x=0, y=-300)
 pad1 = Paddle1()
 pad2 = Paddle2()
+t1 = threading.Thread(target=ball.Ball)
 
-pad_col = PadCollision()
+# pad_col = PadCollision()
+
+# ball = Ball()
+t1.start()
+screen.onkeypress(pad1.up, key='Up')
+screen.onkeypress(pad1.down, key='Down')
+screen.onkeypress(pad2.up, key='w')
+screen.onkeypress(pad2.down, key='s')
 # pad_col.pad_collision(coordinate)
-
-ball = Ball()
-
+screen.ontimer(self.move_ball, 10)  # Start the ball movement
+screen.listen()
 screen.exitonclick()
 
 '''

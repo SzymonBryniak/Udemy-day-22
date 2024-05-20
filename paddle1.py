@@ -17,7 +17,7 @@ class Paddle1:
         self.pad1 = []
         self.create_pad1()
         self.screen = Screen()
-        self.screen.listen()
+        # self.screen.listen()
         # self.screen.onkeypress(self.up, "Up")
         # self.screen.onkeypress(self.down, "Down")
 
