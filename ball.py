@@ -1,12 +1,21 @@
 import random
+import paddle1
+import paddle2
 import threading
 from turtle import Turtle, Screen
 import threading
 STARTING_POSITION = (0, 0)
 
+#I plan to pass coordinates from pads to the ball
+#to make the ball movement stop for 1 ms when
+# pad coordinates will change
+
 
 class Ball:
     def __init__(self):
+
+        self.pad1 = paddle1
+        self.pad2 = paddle2
         self.ball_x = 0
         self.ball_y = 0
         self.ball = []
@@ -23,7 +32,8 @@ class Ball:
         new_segment.penup()
         new_segment.goto(x=0, y=0)
         self.ball.append(new_segment)
-        self.screen.ontimer(self.top_left())
+        self.top_left()
+        # self.screen.ontimer(self.top_left())
 
     def forward_ball(self):
         self.ball[0].forward(200)

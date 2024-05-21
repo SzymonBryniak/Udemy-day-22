@@ -7,6 +7,8 @@ LEFT = 180
 RIGHT = 0
 FORWARD = 60
 
+PAD2_COORDINATES = []
+
 
 class Paddle2:
     def __init__(self):
@@ -43,6 +45,8 @@ class Paddle2:
         self.screen.update()
         self.p2ux = self.pad2[0].xcor()
         self.p2uy = self.pad2[0].ycor()
+        PAD2_COORDINATES[0] = self.p2ux
+        PAD2_COORDINATES[1] = self.p2uy
         print(self.p2ux, self.p2uy)
 
     def down(self):
@@ -56,5 +60,7 @@ class Paddle2:
         self.screen.update()
         self.p2dx = self.pad2[0].xcor()
         self.p2dy = self.pad2[0].ycor()
+        PAD2_COORDINATES[0] = self.p2dx
+        PAD2_COORDINATES[1] = self.p2dy
+        print(self.p2ux, self.p2uy)
         print(self.p2dx, self.p2dy)
-
