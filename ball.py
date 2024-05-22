@@ -5,7 +5,7 @@ import threading
 from turtle import Turtle, Screen
 import threading
 STARTING_POSITION = (0, 0)
-
+pad_coordinates = [0, 0]
 #I plan to pass coordinates from pads to the ball
 #to make the ball movement stop for 1 ms when
 # pad coordinates will change
@@ -13,8 +13,8 @@ STARTING_POSITION = (0, 0)
 
 class Ball:
     def __init__(self):
-
         self.pad1 = paddle1
+        self.pad2 = paddle2
         self.pad2 = paddle2
         self.ball_x = 0
         self.ball_y = 0
@@ -26,6 +26,12 @@ class Ball:
 
         #self.dict_to = {'left_x': random.randint(-300, 0),
                         #'left_y': random.randint(0, -300)}
+                        #'left_y': random.randint(0, -300)}
+    def get_pad_coordinates(self):
+        old_pad1_coordinate = self.pad1.PAD1_COORDINATES
+        old_pad2_coordinate = self.pad2.PAD2_COORDINATES
+        return old_pad1_coordinate, old_pad2_coordinate
+
     def create_ball(self):
         new_segment = Turtle('circle')
         new_segment.color('green')
@@ -64,6 +70,8 @@ class Ball:
         ball_x = 0
         ball_y = 0
         self.ball[0].setheading(angle)
+
+        self.screen.ontimer()
         while ball_x > -260:
             ball_x = self.ball[0].xcor()
             ball_y = self.ball[0].ycor()

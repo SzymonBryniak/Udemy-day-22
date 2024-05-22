@@ -7,7 +7,7 @@ LEFT = 180
 RIGHT = 0
 FORWARD = 60
 
-PAD2_COORDINATES = []
+PAD2_COORDINATES = [0, 0]
 
 
 class Paddle2:
@@ -19,9 +19,9 @@ class Paddle2:
         self.pad2 = []
         self.create_pad2()
         self.screen = Screen()
-        # self.screen.listen()
-        # self.screen.onkeypress(self.up, "w")
-        # self.screen.onkeypress(self.down, "s")
+        self.screen.listen()
+        self.screen.onkeypress(self.up, "w")
+        self.screen.onkeypress(self.down, "s")
 
     def create_pad2(self):
         for position in STARTING_POSITIONS:
@@ -62,5 +62,4 @@ class Paddle2:
         self.p2dy = self.pad2[0].ycor()
         PAD2_COORDINATES[0] = self.p2dx
         PAD2_COORDINATES[1] = self.p2dy
-        print(self.p2ux, self.p2uy)
         print(self.p2dx, self.p2dy)
