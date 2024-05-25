@@ -8,7 +8,7 @@ from paddle_collision import PadCollision
 middle = Turtle()
 screen = Screen()
 screen.listen()
-
+coordinates = 0
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 middle.hideturtle()
@@ -25,10 +25,18 @@ screen.onkeypress(pad1.down, key='Down')
 screen.onkeypress(pad2.up, key='w')
 screen.onkeypress(pad2.down, key='s')
 ball.create_ball()
+#####
 
+
+'''
+
+Collision evaluation
+
+'''
+######
 
 screen.exitonclick()
-# screen.mainloop()
+
 '''
 screen.listen()
 screen.onkey(pad1.up, "Up")

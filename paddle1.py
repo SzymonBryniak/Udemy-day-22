@@ -20,6 +20,7 @@ class Paddle1:
         self.p1dy = 0
         self.pad1 = []
         self.create_pad1()
+        self.PAD1_COO
 
     def create_pad1(self):
         for position in STARTING_POSITIONS:
@@ -48,7 +49,7 @@ class Paddle1:
         self.ball.pad_coordinates[0] = self.p1ux
         self.ball.pad_coordinates[1] = self.p1uy
         print(self.p1ux, self.p1uy)
-        return
+        return self.p1ux, self.p1uy
 
     def down(self):
         self.screen.tracer(2)

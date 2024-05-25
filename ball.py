@@ -1,6 +1,6 @@
 import random
-import paddle1
-import paddle2
+from paddle1 import Paddle1
+from paddle2 import Paddle2
 from turtle import Turtle, Screen
 
 STARTING_POSITION = (0, 0)
@@ -10,10 +10,9 @@ pad_coordinates = [0, 0]
 # pad coordinates will change
 
 
-class Ball:
+class Ball(Paddle1, Paddle2):
     def __init__(self):
-        self.pad1 = paddle1
-        self.pad2 = paddle2
+        super(Ball).__init__()
         self.screen = Screen()
         self.ball_x = 0
         self.ball_y = 0
@@ -26,12 +25,8 @@ class Ball:
         new_segment.color('green')
         new_segment.penup()
         new_segment.goto(x=0, y=0)
-
         self.ball.append(new_segment)
         self.ball_start()
-
-    def forward_ball(self):
-        self.ball[0].forward(200)
 
     def ball_start(self):
         direction = random.randint(1, 4)
@@ -54,6 +49,7 @@ class Ball:
             ball_x = self.ball[0].xcor()
             ball_y = self.ball[0].ycor()
             self.ball[0].forward(0.04)
+        print(f'pad at {pad_coordinates}')
         return ball_x, ball_y, angle
 
     def top_left(self):
@@ -78,6 +74,7 @@ class Ball:
             ball_x = self.ball[0].xcor()
             ball_y = self.ball[0].ycor()
             self.ball[0].forward(0.04)
+
         return ball_x, ball_y, angle
 
     def bottom_right(self):
