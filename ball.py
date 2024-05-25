@@ -1,9 +1,8 @@
 import random
 import paddle1
 import paddle2
-import threading
 from turtle import Turtle, Screen
-import threading
+
 STARTING_POSITION = (0, 0)
 pad_coordinates = [0, 0]
 #I plan to pass coordinates from pads to the ball
@@ -34,7 +33,7 @@ class Ball:
 
         self.ball.append(new_segment)
         self.top_left()
-        # self.screen.ontimer(self.top_left())
+
 
     def forward_ball(self):
         self.ball[0].forward(200)
