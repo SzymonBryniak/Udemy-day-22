@@ -21,10 +21,6 @@ class Ball:
         # screen.ontimer(self.move_ball, 10)  # Start the ball movement
         self.game_on = True
 
-        #self.dict_to = {'left_x': random.randint(-300, 0),
-                        #'left_y': random.randint(0, -300)}
-                        #'left_y': random.randint(0, -300)
-
     def create_ball(self):
         new_segment = Turtle('circle')
         new_segment.color('green')
@@ -33,7 +29,6 @@ class Ball:
 
         self.ball.append(new_segment)
         self.top_left()
-
 
     def forward_ball(self):
         self.ball[0].forward(200)

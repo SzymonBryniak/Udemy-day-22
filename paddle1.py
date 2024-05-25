@@ -21,7 +21,6 @@ class Paddle1:
         self.pad1 = []
         self.create_pad1()
 
-
     def create_pad1(self):
         for position in STARTING_POSITIONS:
             self.add_segment(position)
@@ -52,7 +51,6 @@ class Paddle1:
         return
 
     def down(self):
-        # self.screen.listen()
         self.screen.tracer(2)
         self.pad1[0].setheading(DOWN)
         self.pad1[0].forward(FORWARD)

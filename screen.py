@@ -5,12 +5,10 @@ from paddle2 import Paddle2
 from ball import Ball
 from paddle_collision import PadCollision
 
-
 middle = Turtle()
 screen = Screen()
 screen.listen()
 
-################
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 middle.hideturtle()
