@@ -28,15 +28,13 @@ class Ball:
         new_segment.goto(x=0, y=0)
 
         self.ball.append(new_segment)
-        self.top_left()
+        self.ball_start()
 
     def forward_ball(self):
         self.ball[0].forward(200)
 
     def ball_start(self):
-        self.create_ball()
         direction = random.randint(1, 4)
-
         if direction == 1:
             self.bottom_left()
         elif direction == 2:
@@ -47,39 +45,51 @@ class Ball:
             self.top_right()
 
     def bottom_left(self):
-        left_y = random.randint(-300, 0)
-        self.ball[0].goto(x=-260, y=left_y)
-
-        return [-260, int(left_y)]
-
-    def top_left(self):
         self.screen.tracer(2)
-
-        angle = random.randint(145, 180)
-        #self.ball[0].goto(x=-260, y=right_y)
+        angle = random.randint(180, 225)
         ball_x = 0
         ball_y = 0
-
         self.ball[0].setheading(angle)
-
         while ball_x > -260:
             ball_x = self.ball[0].xcor()
             ball_y = self.ball[0].ycor()
-            self.ball[0].forward(0.01)
+            self.ball[0].forward(0.04)
+        return ball_x, ball_y, angle
 
+    def top_left(self):
+        self.screen.tracer(2)
+        angle = random.randint(145, 180)
+        ball_x = 0
+        ball_y = 0
+        self.ball[0].setheading(angle)
+        while ball_x > -260:
+            ball_x = self.ball[0].xcor()
+            ball_y = self.ball[0].ycor()
+            self.ball[0].forward(0.04)
         return ball_x, ball_y, angle
 
     def top_right(self):
-        left_y = random.randint(0, 300)
-
-        self.ball[0].goto(x=260, y=left_y)
-
-        return [260, int(left_y)]
+        self.screen.tracer(2)
+        angle = random.randint(0, 30)
+        ball_x = 0
+        ball_y = 0
+        self.ball[0].setheading(angle)
+        while ball_x < 260:
+            ball_x = self.ball[0].xcor()
+            ball_y = self.ball[0].ycor()
+            self.ball[0].forward(0.04)
+        return ball_x, ball_y, angle
 
     def bottom_right(self):
-        right_y = random.randint(-300, 0)
-        self.ball[0].goto(x=260, y=right_y)
-
-        return [260, int(right_y)]
+        self.screen.tracer(2)
+        angle = random.randint(320, 360)
+        ball_x = 0
+        ball_y = 0
+        self.ball[0].setheading(angle)
+        while ball_x < 260:
+            ball_x = self.ball[0].xcor()
+            ball_y = self.ball[0].ycor()
+            self.ball[0].forward(0.04)
+        return ball_x, ball_y, angle
 
 

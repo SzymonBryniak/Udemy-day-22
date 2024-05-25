@@ -64,7 +64,6 @@ class Paddle2:
         self.pad2[1].forward(FORWARD)
         self.pad2[2].setheading(DOWN)
         self.pad2[2].forward(FORWARD)
-
         self.p2dx = self.pad2[0].xcor()
         self.p2dy = self.pad2[0].ycor()
         PAD2_COORDINATES[0] = self.p2dx
