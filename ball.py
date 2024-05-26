@@ -1,6 +1,6 @@
 import random
-from paddle1 import Paddle1
-from paddle2 import Paddle2
+import paddle1
+import paddle2
 from turtle import Turtle, Screen
 
 STARTING_POSITION = (0, 0)
@@ -10,9 +10,8 @@ pad_coordinates = [0, 0]
 # pad coordinates will change
 
 
-class Ball(Paddle1, Paddle2):
+class Ball:
     def __init__(self):
-        super(Ball).__init__()
         self.screen = Screen()
         self.ball_x = 0
         self.ball_y = 0

@@ -20,7 +20,6 @@ class Paddle1:
         self.p1dy = 0
         self.pad1 = []
         self.create_pad1()
-        self.PAD1_COO
 
     def create_pad1(self):
         for position in STARTING_POSITIONS:
