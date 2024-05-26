@@ -13,8 +13,8 @@ FORWARD = 30
 
 
 class Paddle1:
-    def __init__(self, coordinates):
-        self.coordinates = coordinates
+    def __init__(self, dict_coordinates):
+        self.dict_coordinates = dict_coordinates
         self.ball = ball
         self.screen = Screen()
         self.p1ux = 0
@@ -47,11 +47,9 @@ class Paddle1:
         self.pad1[2].forward(FORWARD)
         self.p1ux = self.pad1[0].xcor()
         self.p1uy = self.pad1[0].ycor()
-        self.collision.pad_collision(self.pad1[0].xcor)
-        # pad1_coordinates[0] = self.p1ux
-        # pad1_coordinates[1] = self.p1uy
-        self.coordinates[2] = self.p1ux
-        self.coordinates[3] = self.p1uy
+        self.dict_coordinates['pad1_x'] = self.p1ux
+        self.dict_coordinates['pad1_y'] = self.p1uy
+
         print(self.p1ux, self.p1uy)
         return
 
@@ -65,8 +63,8 @@ class Paddle1:
         self.pad1[2].forward(FORWARD)
         self.p1dx = self.pad1[0].xcor()
         self.p1dy = self.pad1[0].ycor()
-        self.coordinates[2] = self.p1dx
-        self.coordinates[3] = self.p1dy
+        self.dict_coordinates['pad1_x'] = self.p1dx
+        self.dict_coordinates['pad1_y'] = self.p1dy
 
         print(self.p1dx, self.p1dy)
         return

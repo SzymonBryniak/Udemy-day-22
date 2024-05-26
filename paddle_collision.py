@@ -2,10 +2,10 @@
 
 class PadCollision:
 
-    def __int__(self, coordinates):
-        self.coordinates = coordinates
+    def __int__(self):
+        self.cor = 0
 
-    def pad_collision(self):
+    def pad_collision(self, coordinates):
 
         return
 

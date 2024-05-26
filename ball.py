@@ -11,8 +11,8 @@ STARTING_POSITION = (0, 0)
 
 
 class Ball:
-    def __init__(self, coordinates):
-        self.coordinates = coordinates
+    def __init__(self, dict_coordinates):
+        self.dict_coordinates = dict_coordinates
         self.screen = Screen()
         self.ball_x = 0
         self.ball_y = 0
@@ -51,8 +51,8 @@ class Ball:
             ball_x = self.ball[0].xcor()
             ball_y = self.ball[0].ycor()
             self.ball[0].forward(0.04)
-        self.coordinates[0] = self.ball[0].xcor()
-        self.coordinates[1] = self.ball[0].ycor()
+        self.dict_coordinates['ball_x'] = self.ball[0].xcor()
+        self.dict_coordinates['ball_y'] = self.ball[0].ycor()
         return ball_x, ball_y, angle
 
     def top_left(self):
@@ -65,6 +65,8 @@ class Ball:
             ball_x = self.ball[0].xcor()
             ball_y = self.ball[0].ycor()
             self.ball[0].forward(0.04)
+        self.dict_coordinates['ball_x'] = self.ball[0].xcor()
+        self.dict_coordinates['ball_y'] = self.ball[0].ycor()
         return ball_x, ball_y, angle
 
     def top_right(self):
@@ -77,7 +79,8 @@ class Ball:
             ball_x = self.ball[0].xcor()
             ball_y = self.ball[0].ycor()
             self.ball[0].forward(0.04)
-
+        self.dict_coordinates['ball_x'] = self.ball[0].xcor()
+        self.dict_coordinates['ball_y'] = self.ball[0].ycor()
         return ball_x, ball_y, angle
 
     def bottom_right(self):
@@ -90,6 +93,8 @@ class Ball:
             ball_x = self.ball[0].xcor()
             ball_y = self.ball[0].ycor()
             self.ball[0].forward(0.04)
+        self.dict_coordinates['ball_x'] = self.ball[0].xcor()
+        self.dict_coordinates['ball_y'] = self.ball[0].ycor()
         return ball_x, ball_y, angle
 
 
