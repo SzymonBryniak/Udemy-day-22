@@ -1,5 +1,4 @@
 from turtle import Turtle, Screen
-import threading
 import ball
 STARTING_POSITIONS = [(-280, 20), (-280, 0), (-280, -20)]
 UP = 90
@@ -8,11 +7,10 @@ LEFT = 180
 RIGHT = 0
 FORWARD = 30
 
-PAD2_COORDINATES = [0, 0]
-
 
 class Paddle2:
-    def __init__(self):
+    def __init__(self, coordinates):
+        self.coordinates = coordinates
         self.ball = ball
         self.screen = Screen()
         self.p2ux = 0
@@ -48,10 +46,9 @@ class Paddle2:
         self.pad2[2].forward(FORWARD)
         self.p2ux = self.pad2[0].xcor()
         self.p2uy = self.pad2[0].ycor()
-        PAD2_COORDINATES[0] = self.p2ux
-        PAD2_COORDINATES[1] = self.p2uy
-        self.ball.pad_coordinates[0] = self.p2ux
-        self.ball.pad_coordinates[1] = self.p2uy
+
+        self.coordinates[4] = self.p2ux
+        self.coordinates[5] = self.p2uy
         print(self.p2ux, self.p2uy)
         return
 
@@ -66,9 +63,8 @@ class Paddle2:
         self.pad2[2].forward(FORWARD)
         self.p2dx = self.pad2[0].xcor()
         self.p2dy = self.pad2[0].ycor()
-        PAD2_COORDINATES[0] = self.p2dx
-        PAD2_COORDINATES[1] = self.p2dy
-        self.ball.pad_coordinates[0] = self.p2ux
-        self.ball.pad_coordinates[1] = self.p2uy
+        self.coordinates[4] = self.p2dx
+        self.coordinates[5] = self.p2dy
+
         print(self.p2dx, self.p2dy)
         return

@@ -4,20 +4,22 @@ import paddle2
 from turtle import Turtle, Screen
 
 STARTING_POSITION = (0, 0)
-pad_coordinates = [0, 0]
+
 #I plan to pass coordinates from pads to the ball
 #to make the ball movement stop for 1 ms when
 # pad coordinates will change
 
 
 class Ball:
-    def __init__(self):
+    def __init__(self, coordinates):
+        self.coordinates = coordinates
         self.screen = Screen()
         self.ball_x = 0
         self.ball_y = 0
         self.ball = []
         # screen.ontimer(self.move_ball, 10)  # Start the ball movement
         self.game_on = True
+        return
 
     def create_ball(self):
         new_segment = Turtle('circle')
@@ -25,7 +27,8 @@ class Ball:
         new_segment.penup()
         new_segment.goto(x=0, y=0)
         self.ball.append(new_segment)
-        self.ball_start()
+        # self.ball_start()
+        self.bottom_left()
 
     def ball_start(self):
         direction = random.randint(1, 4)
@@ -48,7 +51,8 @@ class Ball:
             ball_x = self.ball[0].xcor()
             ball_y = self.ball[0].ycor()
             self.ball[0].forward(0.04)
-        print(f'pad at {pad_coordinates}')
+        self.coordinates[0] = self.ball[0].xcor()
+        self.coordinates[1] = self.ball[0].ycor()
         return ball_x, ball_y, angle
 
     def top_left(self):

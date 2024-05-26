@@ -1,15 +1,11 @@
-from paddle1 import Paddle1
-from paddle2 import Paddle2
-from ball import Ball
 
 
-class PadCollision(Paddle1, Paddle2, Ball):
+class PadCollision:
 
-    def __int__(self):
-        super(PadCollision).__init__()
-        self.cor = 0
+    def __int__(self, coordinates):
+        self.coordinates = coordinates
 
-    def pad_collision(self, ball_coordinate, pad1_cor, pad2_cor):
+    def pad_collision(self):
 
         return
 
