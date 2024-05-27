@@ -5,13 +5,26 @@ from ball import Ball
 from paddle_collision import PadCollision
 
 
-dict_coordinates = {'ball_x': 0,
-                    'ball_y': 0,
-                    'pad1_x': 0,
-                    'pad1_y': 0,
-                    'pad2_x': 0,
-                    'pad2_y': 0,
+more_coordinates = {'ball': {'ball_x': 0, 'ball_y': 0},
+                    'pad1': {
+                    'p1ux': 0,
+                    'p1uy': 0,
+                    'p1ux1': 0,
+                    'p1uy1': 0,
+                    'p1ux2': 0,
+                    'p1uy2': 0,
+                    },
+                    'pad2': {
+                    'p2ux': 0,
+                    'p2uy': 0,
+                    'p2ux1': 0,
+                    'p2uy1': 0,
+                    'p2ux2': 0,
+                    'p2uy2': 0,
                     }
+                    }
+
+
 collision = PadCollision()
 middle = Turtle()
 screen = Screen()
@@ -24,9 +37,9 @@ middle.setpos(x=0, y=300)
 middle.goto(x=0, y=-300)
 
 ######
-pad1 = Paddle1(dict_coordinates)
-pad2 = Paddle2(dict_coordinates)
-ball = Ball(dict_coordinates)
+pad1 = Paddle1(more_coordinates)
+pad2 = Paddle2(more_coordinates)
+ball = Ball(more_coordinates)
 screen.onkeypress(pad1.up, key='Up')
 screen.onkeypress(pad1.down, key='Down')
 screen.onkeypress(pad2.up, key='w')
@@ -34,8 +47,8 @@ screen.onkeypress(pad2.down, key='s')
 ball.create_ball()
 
 ##### evaluate ball and pad coordinates
-collision.pad_collision(dict_coordinates)
-print(dict_coordinates)
+# collision.pad_collision(dict_coordinates)
+print(more_coordinates)
 
 '''
 Collision evaluation

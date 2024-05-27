@@ -9,14 +9,10 @@ FORWARD = 30
 
 
 class Paddle2:
-    def __init__(self, dict_coordinates):
-        self.dict_coordinates = dict_coordinates
+    def __init__(self, more_coordinates):
+        self.more_coordinates = more_coordinates
         self.ball = ball
         self.screen = Screen()
-        self.p2ux = 0
-        self.p2uy = 0
-        self.p2dx = 0
-        self.p2dy = 0
         self.pad2 = []
         self.create_pad2()
 
@@ -44,11 +40,13 @@ class Paddle2:
         self.pad2[1].forward(FORWARD)
         self.pad2[2].setheading(UP)
         self.pad2[2].forward(FORWARD)
-        self.p2ux = self.pad2[0].xcor()
-        self.p2uy = self.pad2[0].ycor()
-        self.dict_coordinates['pad2_x'] = self.p2ux
-        self.dict_coordinates['pad2_y'] = self.p2uy
-        print(self.p2ux, self.p2uy)
+        self.more_coordinates['pad2']['p2ux'] = self.pad2[0].xcor()
+        self.more_coordinates['pad2']['p2uy'] = self.pad2[0].ycor()
+        self.more_coordinates['pad2']['p2ux1'] = self.pad2[1].xcor()
+        self.more_coordinates['pad2']['p2uy1'] = self.pad2[1].ycor()
+        self.more_coordinates['pad2']['p2ux2'] = self.pad2[2].xcor()
+        self.more_coordinates['pad2']['p2uy2'] = self.pad2[2].ycor()
+        print(self.pad2[0].xcor(), self.pad2[0].ycor())
         return
 
     def down(self):
@@ -60,9 +58,11 @@ class Paddle2:
         self.pad2[1].forward(FORWARD)
         self.pad2[2].setheading(DOWN)
         self.pad2[2].forward(FORWARD)
-        self.p2dx = self.pad2[0].xcor()
-        self.p2dy = self.pad2[0].ycor()
-        self.dict_coordinates['pad2_x'] = self.p2dx
-        self.dict_coordinates['pad2_y'] = self.p2dy
-        print(self.p2dx, self.p2dy)
+        self.more_coordinates['pad2']['p2dx'] = self.pad2[0].xcor()
+        self.more_coordinates['pad2']['p2dy'] = self.pad2[0].ycor()
+        self.more_coordinates['pad2']['p2dx1'] = self.pad2[1].xcor()
+        self.more_coordinates['pad2']['p2dy1'] = self.pad2[1].ycor()
+        self.more_coordinates['pad2']['p2dx2'] = self.pad2[2].xcor()
+        self.more_coordinates['pad2']['p2dy2'] = self.pad2[2].ycor()
+        print(self.pad2[0].xcor(), self.pad2[0].ycor())
         return

@@ -11,8 +11,8 @@ STARTING_POSITION = (0, 0)
 
 
 class Ball:
-    def __init__(self, dict_coordinates):
-        self.dict_coordinates = dict_coordinates
+    def __init__(self, more_coordinates):
+        self.more_coordinates = more_coordinates
         self.screen = Screen()
         self.ball_x = 0
         self.ball_y = 0
@@ -51,8 +51,8 @@ class Ball:
             ball_x = self.ball[0].xcor()
             ball_y = self.ball[0].ycor()
             self.ball[0].forward(0.04)
-        self.dict_coordinates['ball_x'] = self.ball[0].xcor()
-        self.dict_coordinates['ball_y'] = self.ball[0].ycor()
+        self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
+        self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
         return ball_x, ball_y, angle
 
     def top_left(self):
@@ -65,8 +65,8 @@ class Ball:
             ball_x = self.ball[0].xcor()
             ball_y = self.ball[0].ycor()
             self.ball[0].forward(0.04)
-        self.dict_coordinates['ball_x'] = self.ball[0].xcor()
-        self.dict_coordinates['ball_y'] = self.ball[0].ycor()
+        self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
+        self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
         return ball_x, ball_y, angle
 
     def top_right(self):
@@ -79,8 +79,8 @@ class Ball:
             ball_x = self.ball[0].xcor()
             ball_y = self.ball[0].ycor()
             self.ball[0].forward(0.04)
-        self.dict_coordinates['ball_x'] = self.ball[0].xcor()
-        self.dict_coordinates['ball_y'] = self.ball[0].ycor()
+        self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
+        self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
         return ball_x, ball_y, angle
 
     def bottom_right(self):
@@ -93,8 +93,7 @@ class Ball:
             ball_x = self.ball[0].xcor()
             ball_y = self.ball[0].ycor()
             self.ball[0].forward(0.04)
-        self.dict_coordinates['ball_x'] = self.ball[0].xcor()
-        self.dict_coordinates['ball_y'] = self.ball[0].ycor()
+        self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
+        self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
         return ball_x, ball_y, angle
-
 
