@@ -7,20 +7,20 @@ from paddle_collision import PadCollision
 
 more_coordinates = {'ball': {'ball_x': 0, 'ball_y': 0},
                     'pad1': {
-                    'p1ux': 0,
-                    'p1uy': 0,
-                    'p1ux1': 0,
-                    'p1uy1': 0,
-                    'p1ux2': 0,
-                    'p1uy2': 0,
+                    'p1x': 0,
+                    'p1y': 0,
+                    'p1x1': 0,
+                    'p1y1': 0,
+                    'p1x2': 0,
+                    'p1y2': 0,
                     },
                     'pad2': {
-                    'p2ux': 0,
-                    'p2uy': 0,
-                    'p2ux1': 0,
-                    'p2uy1': 0,
-                    'p2ux2': 0,
-                    'p2uy2': 0,
+                    'p2x': 0,
+                    'p2y': 0,
+                    'p2x1': 0,
+                    'p2y1': 0,
+                    'p2x2': 0,
+                    'p2y2': 0,
                     }
                     }
 

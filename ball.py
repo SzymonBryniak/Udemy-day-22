@@ -97,3 +97,4 @@ class Ball:
         self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
         return ball_x, ball_y, angle
 
+# 0
