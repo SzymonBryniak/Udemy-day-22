@@ -5,7 +5,7 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
-FORWARD = 30
+FORWARD = 20
 
 
 class Paddle2:
@@ -66,3 +66,5 @@ class Paddle2:
         self.more_coordinates['pad2']['p2y2'] = self.pad2[2].ycor()
         print(self.pad2[0].xcor(), self.pad2[0].ycor())
         return
+
+

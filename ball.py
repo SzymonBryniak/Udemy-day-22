@@ -2,7 +2,7 @@ import random
 import paddle1
 import paddle2
 from turtle import Turtle, Screen
-
+from paddle_collision import PadCollision
 STARTING_POSITION = (0, 0)
 
 #I plan to pass coordinates from pads to the ball
@@ -12,13 +12,14 @@ STARTING_POSITION = (0, 0)
 
 class Ball:
     def __init__(self, more_coordinates):
+        self.collision = PadCollision()
         self.more_coordinates = more_coordinates
         self.screen = Screen()
         self.ball_x = 0
         self.ball_y = 0
         self.ball = []
         # screen.ontimer(self.move_ball, 10)  # Start the ball movement
-        self.game_on = True
+
         return
 
     def create_ball(self):
@@ -53,6 +54,7 @@ class Ball:
             self.ball[0].forward(0.04)
         self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
         self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
+        self.collision.game_over(self.more_coordinates)
         return ball_x, ball_y, angle
 
     def top_left(self):
@@ -67,6 +69,7 @@ class Ball:
             self.ball[0].forward(0.04)
         self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
         self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
+        self.collision.game_over(self.more_coordinates)
         return ball_x, ball_y, angle
 
     def top_right(self):
@@ -81,6 +84,7 @@ class Ball:
             self.ball[0].forward(0.04)
         self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
         self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
+        self.collision.game_over(self.more_coordinates)
         return ball_x, ball_y, angle
 
     def bottom_right(self):
@@ -95,6 +99,7 @@ class Ball:
             self.ball[0].forward(0.04)
         self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
         self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
+        self.collision.game_over(self.more_coordinates)
         return ball_x, ball_y, angle
 
 # 0

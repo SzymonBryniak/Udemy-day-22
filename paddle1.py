@@ -7,7 +7,7 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
-FORWARD = 30
+FORWARD = 20
 
 # PAD1_COORDINATES = [0, 0, 0, 0]
 
@@ -41,6 +41,7 @@ class Paddle1:
         self.pad1[1].forward(FORWARD)
         self.pad1[2].setheading(UP)
         self.pad1[2].forward(FORWARD)
+
         self.more_coordinates['pad1']['p1x'] = self.pad1[0].xcor()
         self.more_coordinates['pad1']['p1y'] = self.pad1[0].ycor()
         self.more_coordinates['pad1']['p1x1'] = self.pad1[1].xcor()
