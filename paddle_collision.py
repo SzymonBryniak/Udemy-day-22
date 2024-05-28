@@ -9,12 +9,14 @@ class PadCollision:
 
     def game_over(self, coordinates):
         while self.game_on:
-            for key, value in coordinates['pad1'].items():
-                if coordinates['ball_y'] != value:
-                    print('game over')
-            for key, value in coordinates['pad2'].items():
-                if coordinates['ball_y'] != value:
-                    print('game over')
+            if coordinates['ball_x'] == -260:
+                for key, value in coordinates['pad2'].items():
+                    if coordinates['ball_y'] != value:
+                        print('game over')
+            elif coordinates['ball_x'] == 260:
+                for key, value in coordinates['pad1'].items():
+                    if coordinates['ball_y'] != value:
+                        print('game over')
 ####################################################
 
     def pad_collision(self, coordinates):
