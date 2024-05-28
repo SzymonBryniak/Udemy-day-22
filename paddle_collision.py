@@ -9,7 +9,9 @@ class PadCollision:
 
     def bounce(self, range_start, range_end, ball_cor):
         default_angle = 60
-        for i in range(range_start, range_end):
+        for i in range(range_start, range_end): ## this function needs adjustment after the angle
+                                                ## will be decreased to 0. I want to make the ball
+                                                # bounce off in the angles from 60 to 0, and 360 to 300
             default_angle -= 1
             if i == ball_cor:
                 return default_angle
