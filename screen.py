@@ -2,7 +2,7 @@ from turtle import Screen, Turtle
 from paddle1 import Paddle1
 from paddle2 import Paddle2
 from ball import Ball
-
+from wall_collision import Wall
 
 more_coordinates = {'ball': {'ball_x': 0, 'ball_y': 0},
                     'pad1': {
