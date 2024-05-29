@@ -9,14 +9,15 @@ class PadCollision:
 
     def bounce(self, range_start, range_end, ball_cor):
         default_angle = 60
-        for i in range(range_start, range_end): ## this function needs adjustment after the angle
-                                                ## will be decreased to 0. I want to make the ball
-                                                # bounce off in the angles from 60 to 0, and 360 to 300
-            default_angle -= 1
-            if i == ball_cor:
-                return default_angle
+        while default_angle < 330:
+            for i in range(range_start, range_end):
+                if i == ball_cor:
+                    return print(default_angle)
+                elif default_angle == 0:
+                    default_angle = 360
 
-        ### xcor 260 = angle 0 - 60
+                default_angle -= 2
+
         return
 
     def game_over(self, coordinates):
@@ -30,8 +31,8 @@ class PadCollision:
             for i in range(range_start, range_end):
                 if coordinates['ball']['ball_y'] == i:
                     self.bounce(range_start, range_end, i)
-                    return print('collision') ### I will determine the bounce angle here
-                                              # will return pad_collision function
+                    return print('collision'), self.bounce(range_start, range_end, i)
+
             print('game over')
 
         elif coordinates['ball']['ball_x'] == 260:
@@ -40,7 +41,7 @@ class PadCollision:
             for i in range(range_start, range_end):
                 if coordinates['ball']['ball_y'] == i:
                     return print('collision') ### I will determine the bounce angle here
-                                                # will return pad_collision function
+                                                # will return bounce function
             print('game_over')
 
 ####################################################
