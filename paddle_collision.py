@@ -29,7 +29,7 @@ class PadCollision:
             range_end = int(coordinates['pad2']['p2y'])
             range_start = int(coordinates['pad2']['p2y2'])
             for i in range(range_start, range_end):
-                if coordinates['ball']['ball_y'] == i:
+                if i == coordinates['ball']['ball_y']:
                     self.bounce(range_start, range_end, i)
                     return print('collision'), self.bounce(range_start, range_end, i)
 
