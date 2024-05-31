@@ -29,7 +29,7 @@ class Ball:
         new_segment.goto(x=0, y=0)
         self.ball.append(new_segment)
         # self.ball_start()
-        self.bottom_left()
+        self.top_left()
 
     def ball_start(self):
         direction = random.randint(1, 4)

@@ -8,16 +8,15 @@ class PadCollision:
 # I may reorganise nested loops below into list comprehension if possible
 
     def bounce(self, range_start, range_end, ball_cor):
-        default_angle = 60
-        while default_angle < 330:
+        default_angle = 40
+        while default_angle > 0:
             for i in range(range_start, range_end):
-                if i == ball_cor:
-                    return print(default_angle)
-                elif default_angle == 0:
+                if default_angle == 0:
                     default_angle = 360
-
+                if i == ball_cor:
+                    print(default_angle)
+                    return
                 default_angle -= 2
-
         return
 
     def game_over(self, coordinates):
@@ -31,17 +30,22 @@ class PadCollision:
             for i in range(range_start, range_end):
                 if i == coordinates['ball']['ball_y']:
                     self.bounce(range_start, range_end, i)
-                    return print('collision'), self.bounce(range_start, range_end, i)
+                    print('collision'),
+                    return
+            if coordinates['ball']['ball_y'] == 0:
+                print('collision')
+                return
+            else:
+                print('game over')
 
-            print('game over')
-
-        elif coordinates['ball']['ball_x'] == 260:
+        elif coordinates['ball']['ball_y'] == 260:
             range_start = int(coordinates['pad1']['p1y'])
-            range_end = int(coordinates['pad1']['p2y2'])
+            range_end = int(coordinates['pad1']['p1y2'])
             for i in range(range_start, range_end):
-                if coordinates['ball']['ball_y'] == i:
-                    return print('collision') ### I will determine the bounce angle here
-                                                # will return bounce function
+                if i == coordinates['ball']['ball_y']:
+                    self.bounce(range_start, range_end, i)
+                    print('collision')
+                    return
             print('game_over')
 
 ####################################################
