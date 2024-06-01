@@ -8,27 +8,33 @@ class PadCollision:
 # I may reorganise nested loops below into list comprehension if possible
 
     def bounce(self, range_start, range_end, ball_cor):
-        default_angle = 40
-        while default_angle > 0:
+        default_angle = 360
+        while default_angle > 320:
             for i in range(range_start, range_end):
+                print(default_angle)
                 if default_angle == 0:
-                    default_angle = 360
+                    default_angle = 0
                 if i == ball_cor:
                     print(default_angle)
                     return
-                default_angle -= 2
+                if default_angle < 320:
+                    default_angle += 2
+                else:
+                    default_angle -= 2
         return
 
     def game_over(self, coordinates):
         game_on = 1
         coordinates['ball']['ball_x'] = int(coordinates['ball']['ball_x'])
         coordinates['ball']['ball_y'] = int(coordinates['ball']['ball_y'])
-
+        count = 0
         if coordinates['ball']['ball_x'] == -260:
             range_end = int(coordinates['pad2']['p2y'])
             range_start = int(coordinates['pad2']['p2y2'])
             for i in range(range_start, range_end):
                 if i == coordinates['ball']['ball_y']:
+                    print(count)
+                    count += 1
                     self.bounce(range_start, range_end, i)
                     print('collision'),
                     return
