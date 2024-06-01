@@ -38,11 +38,17 @@ class Ball:
             self.ball[0].setheading(angle)
             self.ball[0].forward(0.04)
             # if self.ball[0].xcor == 260:
-        self.bounce_off_1(int(self.collision.game_over(self.more_coordinates)))
+        # self.bounce_off_1(int(self.collision.game_over(self.more_coordinates)))
         ## I must invoke the bounce_off_1 function
-
+        self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
+        self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
+        print(self.more_coordinates)
+        
     def bounce_off_1(self, angle):
         self.screen.tracer(2)
+        self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
+        self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
+        print(self.more_coordinates)
         while self.ball[0].xcor() > -261:
             self.ball[0].setheading(angle)
             self.ball[0].forward(0.04)
