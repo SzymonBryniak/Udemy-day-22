@@ -9,13 +9,13 @@ class PadCollision:
 
     def bounce(self, range_start, range_end, ball_cor):
         default_angle = 320
-        while default_angle < 360:
+        while default_angle < 361:
             for i in range(range_start, range_end):
                 if default_angle == 360:
                     default_angle = 0
                 if i == ball_cor:
                     print(default_angle)
-                    return
+                    return default_angle
                 if default_angle < 360:
                     default_angle += 2
                 else:
@@ -32,24 +32,28 @@ class PadCollision:
             range_start = int(coordinates['pad2']['p2y2'])
             for i in range(range_start, range_end):
                 if i == coordinates['ball']['ball_y']:
-                    self.bounce(range_start, range_end, i)
                     print('collision'),
-                    return
+                    return self.bounce(range_start, range_end, i)
             if coordinates['ball']['ball_y'] == 0:
                 print('collision')
-                return
+                return 0
             else:
                 print('game over')
+                return 1
 
-        elif coordinates['ball']['ball_y'] == 260:
-            range_start = int(coordinates['pad1']['p1y'])
-            range_end = int(coordinates['pad1']['p1y2'])
+        elif coordinates['ball']['ball_x'] == 260:
+            range_start = int(coordinates['pad1']['p1y2'])
+            range_end = int(coordinates['pad1']['p1y'])
             for i in range(range_start, range_end):
                 if i == coordinates['ball']['ball_y']:
-                    self.bounce(range_start, range_end, i)
                     print('collision')
-                    return
-            print('game_over')
+                    return self.bounce(range_start, range_end, i)
+            if coordinates['ball']['ball_y'] == 0: ### I need to write code for the "0" exception
+                print('collision')
+                return 0
+            else:
+                print('game_over')
+                return 1
 
 ####################################################
 

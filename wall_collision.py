@@ -6,10 +6,7 @@ from ball import Ball
 class Wall(Paddle1, Paddle2, Ball):
 
     def __int__(self):
-        super().__init__()
-
-    def init_wall(self):
-        pass
+        return
 
     def return_cor(self):
         pass

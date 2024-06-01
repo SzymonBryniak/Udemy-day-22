@@ -18,9 +18,10 @@ class Ball:
         self.ball_x = 0
         self.ball_y = 0
         self.ball = []
-        # screen.ontimer(self.move_ball, 10)  # Start the ball movement
 
+        # screen.ontimer(self.move_ball, 10)  # Start the ball movement
         return
+### I want to use recursive function call to loop the animation
 
     def create_ball(self):
         new_segment = Turtle('circle')
@@ -30,6 +31,23 @@ class Ball:
         self.ball.append(new_segment)
         # self.ball_start()
         self.top_left()
+
+    def bounce_off_2(self, angle):
+        self.screen.tracer(2)
+        while self.ball[0].xcor() < 260:
+            self.ball[0].setheading(angle)
+            self.ball[0].forward(0.04)
+            # if self.ball[0].xcor == 260:
+        self.bounce_off_1(int(self.collision.game_over(self.more_coordinates)))
+        ## I must invoke the bounce_off_1 function
+
+    def bounce_off_1(self, angle):
+        self.screen.tracer(2)
+        while self.ball[0].xcor() > -261:
+            self.ball[0].setheading(angle)
+            self.ball[0].forward(0.04)
+            # if self.ball[0].xcor == -260:
+        self.bounce_off_2(int(self.collision.game_over(self.more_coordinates)))
 
     def ball_start(self):
         direction = random.randint(1, 4)
@@ -54,8 +72,8 @@ class Ball:
             self.ball[0].forward(0.04)
         self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
         self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
-        self.collision.game_over(self.more_coordinates)
-        return ball_x, ball_y, angle
+        self.bounce_off_2(int(self.collision.game_over(self.more_coordinates)))
+        return
 
     def top_left(self):
         self.screen.tracer(2)
@@ -69,8 +87,8 @@ class Ball:
             self.ball[0].forward(0.04)
         self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
         self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
-        self.collision.game_over(self.more_coordinates)
-        return ball_x, ball_y, angle
+        self.bounce_off_2(int(self.collision.game_over(self.more_coordinates)))
+        return
 
     def top_right(self):
         self.screen.tracer(2)
@@ -84,8 +102,9 @@ class Ball:
             self.ball[0].forward(0.04)
         self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
         self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
-        self.collision.game_over(self.more_coordinates)
-        return ball_x, ball_y, angle
+        self.bounce_off_1(int(self.collision.game_over(self.more_coordinates)))
+        # self.collision.game_over(self.more_coordinates)
+        return
 
     def bottom_right(self):
         self.screen.tracer(2)
@@ -99,7 +118,7 @@ class Ball:
             self.ball[0].forward(0.04)
         self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
         self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
-        self.collision.game_over(self.more_coordinates)
-        return ball_x, ball_y, angle
+        self.bounce_off_1(int(self.collision.game_over(self.more_coordinates)))
+        return
 
 # 0
