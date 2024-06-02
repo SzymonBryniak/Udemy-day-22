@@ -20,7 +20,7 @@ class Ball:
         self.ball = []
 
         # screen.ontimer(self.move_ball, 10)  # Start the ball movement
-        return
+
 ### I want to use recursive function call to loop the animation
 
     def create_ball(self):
@@ -33,7 +33,7 @@ class Ball:
         self.top_left()
 
     def bounce_off_2(self, angle): ## paddle 2
-        print(angle)
+        print(f'bounce_off_2 angle: {angle}')
         self.screen.tracer(2)
         self.ball[0].setheading(angle)
         while self.ball[0].xcor() < 260:
@@ -41,19 +41,22 @@ class Ball:
             # if self.ball[0].xcor == 260:
         self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
         self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
-        return self.bounce_off_1(int(self.collision.game_over(self.more_coordinates)))
+        print(f'bounce pad 2{self.more_coordinates}')
+        return self.bounce_off_1(int(self.collision.game_over(self.more_coordinates)))# get
         ## I must invoke the bounce_off_1 function
 
     def bounce_off_1(self, angle): ## paddle 1
+        print(f'bounce_off_1 angle: {angle}')
         self.screen.tracer(2)
         print(self.more_coordinates)
-        self.ball[0].setheading(190)  # angle is wrong
+        self.ball[0].setheading(angle)  # angle was wrong
         while self.ball[0].xcor() > -261:
             self.ball[0].forward(0.04)
             # if self.ball[0].xcor == -260:
         self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
         self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
-        return self.bounce_off_2(int(self.collision.game_over(self.more_coordinates)))
+        print(f'bounce pad 1 {self.more_coordinates}')
+        return self.bounce_off_2(self.collision.game_over(self.more_coordinates))
 
     def ball_start(self):
         direction = random.randint(1, 4)
