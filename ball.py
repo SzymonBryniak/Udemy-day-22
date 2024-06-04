@@ -43,8 +43,10 @@ class Ball:
             # if self.ball[0].xcor == 260:
         self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
         self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
+        print('after forward from pad 2')
         print(f'bounce pad 2{self.more_coordinates}')
-        return self.bounce_off_1(int(self.pad_collision.core_bounce(self.more_coordinates)))# get
+        self.bounce_off_1(int(self.pad_collision.core_bounce(self.more_coordinates)))  # get
+        return
         ## I must invoke the bounce_off_1 function
 
     def bounce_off_1(self, angle): ## paddle 1
@@ -56,10 +58,12 @@ class Ball:
         while self.ball[0].xcor() > -261:
             self.ball[0].forward(0.04)
             # if self.ball[0].xcor == -260:
+        print('after forward from pad1')
         self.more_coordinates['ball']['ball_x'] = self.ball[0].xcor()
         self.more_coordinates['ball']['ball_y'] = self.ball[0].ycor()
         print(f'bounce pad 1 {self.more_coordinates}')
-        return self.bounce_off_2(self.pad_collision.core_bounce(self.more_coordinates))
+        self.bounce_off_2(self.pad_collision.core_bounce(self.more_coordinates))
+        return
 
     def ball_start(self):
         direction = random.randint(1, 4)
