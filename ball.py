@@ -34,8 +34,8 @@ class Ball:
         self.top_left()
 
     def bounce_off_2(self, angle): ## paddle 2
-        print('bounce_off_2 function start')
-        print(f'bounce_off_2 angle: {angle}')
+        # print('bounce_off_2 function start')
+        # print(f'bounce_off_2 angle: {angle}')
         self.screen.tracer(2)
         self.ball[0].setheading(angle)
         while self.ball[0].xcor() < 260:
@@ -50,12 +50,12 @@ class Ball:
         ## I must invoke the bounce_off_1 function
 
     def bounce_off_1(self, angle): ## paddle 1
-        print('bounce_off_1 function start')
-        print(f'bounce_off_1 angle: {angle}')
+        # print('bounce_off_1 function start')
+        # print(f'bounce_off_1 angle: {angle}')
         self.screen.tracer(2)
         print(self.more_coordinates)
         self.ball[0].setheading(angle)  # angle was wrong
-        while self.ball[0].xcor() > -261:
+        while self.ball[0].xcor() > -260:
             self.ball[0].forward(0.04)
             # if self.ball[0].xcor == -260:
         print('after forward from pad1')

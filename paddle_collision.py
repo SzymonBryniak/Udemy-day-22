@@ -7,20 +7,19 @@ class PadCollision:
         self.angle_pad2 = 0
 
 # The loop runs twice, but it doesn't break the code,  I must fix this later.
-    def bounce_1(self, range_start, range_end, ball_cor): #generates the angle value for pad2
+    def bounce_1(self, range_start, range_end, ball_cor): #generates the angle value for pad2 #  bounce functions must consider negative t
         # print('bounce 1(pad 2)function start')
         print(range_start, range_end)
-        default_angle = 40 ## might need to be 40 was 340
+        default_angle = 60 ## might need to be 40 was 340
         #while default_angle < 361:
 
         for i in range(range_start, range_end):
             if default_angle == 0: #360:
                 default_angle = 360
-            if default_angle > 40:
-                default_angle += 2
             elif i == ball_cor:
+                print(f'ball coordinates pad2 = {i}, {default_angle}')
                 return default_angle
-            default_angle -= 2
+            default_angle -= 3
         return
 
     def bounce_2(self, range_start, range_end, ball_cor): #generates the angle value for pad1
@@ -30,6 +29,7 @@ class PadCollision:
         #while default_angle > 120:
         for i in range(range_start, range_end):
             if i == ball_cor:
+                print(i, default_angle)
                 return default_angle
             else:
                 default_angle -= 2
