@@ -7,10 +7,10 @@ class PadCollision:
         self.angle_pad2 = 0
 
 # The loop runs twice, but it doesn't break the code,  I must fix this later.
-    def bounce_1(self, range_start, range_end, ball_cor): #generates the angle value for pad2 #  bounce functions must consider negative t
+    def bounce_1(self, range_start, range_end, ball_cor): #generates the angle value for pad2 #  bounce functions must consider the
         # print('bounce 1(pad 2)function start')
         print(range_start, range_end)
-        default_angle = 60 ## might need to be 40 was 340
+        default_angle = 40 ## might need to be 40 was 340
         #while default_angle < 361:
 
         for i in range(range_start, range_end):
@@ -19,7 +19,7 @@ class PadCollision:
             elif i == ball_cor:
                 print(f'ball coordinates pad2 = {i}, {default_angle}')
                 return default_angle
-            default_angle -= 3
+            default_angle -= 2
         return
 
     def bounce_2(self, range_start, range_end, ball_cor): #generates the angle value for pad1
@@ -44,29 +44,20 @@ class PadCollision:
             # print('core_bounce if statement pad2')
             range_end = int(coordinates['pad2']['p2y'])
             range_start = int(coordinates['pad2']['p2y2'])
-            for i in range(range_start, range_end):
-                if i == coordinates['ball']['ball_y'] or i == 0:
-                    # print('pre process collision pad2')
-                    self.angle_pad2 = self.bounce_1(range_start, range_end, i) ##
-                    # print(range_start, range_end, i)
-                    # print('collision pad2 ')
-                    return self.angle_pad2  # self.bounce_1(range_start, range_end, i)# return to bounce_off_1
-            # print('game over 1')
-            return
+
+            self.angle_pad2 = self.bounce_1(range_start, range_end, coordinates['ball']['ball_y']) ##
+
+            return self.angle_pad2  # self.bounce_1(range_start, range_end, i)# return to bounce_off_1
+
 
         elif coordinates['ball']['ball_x'] >= 260:  #pad1
             # print('core_bounce if statement pad1')
             range_start = int(coordinates['pad1']['p1y2'])
             range_end = int(coordinates['pad1']['p1y'])
-            for i in range(range_start, range_end):
-                if i == coordinates['ball']['ball_y'] or i == 0:
-                    # print('pre process collision pad1')
-                    self.angle_pad1 = self.bounce_2(range_start, range_end, i)
-                    # print('collision pad1 ')
-                    return self.angle_pad1 #self.bounce_2(range_start, range_end, i) ### changed bounce_1 to bounce_2# return to bounce_off_2
+            self.angle_pad1 = self.bounce_2(range_start, range_end, coordinates['ball']['ball_y'])
+            return self.angle_pad1 #self.bounce_2(range_start, range_end, i) ### changed bounce_1 to bounce_2# return to bounce_off_2
 
-            print('game_over 2')
-            return
+
 
 ####################################################
 
