@@ -41,7 +41,7 @@ class Ball:
         self.more_coordinates['ball']['ball_x'] = math.floor(self.ball[0].xcor())
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         print('after forward from pad 2')
-        print(f'bounce pad 2{self.more_coordinates}')
+        print(f'bounce off pad 2{self.more_coordinates}')
         self.bounce_off_1(int(self.pad_collision.core_bounce(self.more_coordinates)))
         return
         ## I must invoke the bounce_off_1 function
@@ -58,7 +58,7 @@ class Ball:
         print('after forward from pad1')
         self.more_coordinates['ball']['ball_x'] = math.floor(self.ball[0].xcor())
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
-        print(f'bounce pad 1 {self.more_coordinates}')
+        print(f'bounce off pad 1 {self.more_coordinates}')
         self.bounce_off_2(self.pad_collision.core_bounce(self.more_coordinates))
         return
 
