@@ -37,12 +37,12 @@ class Wall:
         coordinates['ball']['ball_x'] = int(coordinates['ball']['ball_x'])
         coordinates['ball']['ball_y'] = int(coordinates['ball']['ball_y'])
         # print(coordinates['ball']['ball_y'])
-        if coordinates['ball']['ball_y'] <= -300:  #
+        if coordinates['ball']['ball_y'] < 0:  #
             if direction == 1:# to pad2
                 return 150
             else:
                 return 30
-        elif coordinates['ball']['ball_y'] >= 300:  #
+        elif coordinates['ball']['ball_y'] > 0:  #
             if direction == 1:# to pad2
                 return 210
             else:

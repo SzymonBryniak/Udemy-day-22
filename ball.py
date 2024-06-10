@@ -22,6 +22,7 @@ class Ball:
         self.ball_y = 0
         self.ball = []
         self.angle = 0
+        self.angle_wall = 0
 
     def create_ball(self):
         new_segment = Turtle('circle')
@@ -37,17 +38,24 @@ class Ball:
         self.screen.tracer(2)
         self.ball[0].setheading(angle)
         while self.ball[0].xcor() < 260: # if ycor == 300 call wall collision function
-            # wall collision detection
-            # if self.more_coordinates['ball']['ball_y'] >= 300 or self.more_coordinates['ball']['ball_y'] >= -300:
-            #     self.bounce_off_1(self.wall.wall_core_bounce(self.more_coordinates, 0))
-            #     return
-            # else:
+            ################################################ wall collision tests
+            if int(self.ball[0].ycor()) == -280:
+                print('bottom wall collision test')
+                self.ball[0].setheading(40)
+                while self.ball[0].xcor() < 260:
+                    self.ball[0].forward(0.04)
+            elif int(self.ball[0].ycor()) == 280:
+                print('bottom wall collision test')
+                self.ball[0].setheading(330)
+                while self.ball[0].xcor() < 260:
+                    self.ball[0].forward(0.04)
             self.ball[0].forward(0.04)
+            ################################################
         self.more_coordinates['ball']['ball_x'] = math.floor(self.ball[0].xcor())
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         print('after forward from pad 2')
         print(f'bounce off pad 2{self.more_coordinates}')
-        self.bounce_off_1(int(self.pad_collision.core_bounce(self.more_coordinates)))
+        self.bounce_off_1(self.pad_collision.core_bounce(self.more_coordinates))
         return
 
     def bounce_off_1(self, angle): ## paddle1 to paddle2
@@ -55,16 +63,19 @@ class Ball:
         self.screen.tracer(2)
         print(self.more_coordinates)
         self.ball[0].setheading(angle)
-
         while self.ball[0].xcor() > -260:
-            if int(self.ball[0].ycor()) == -290:
-                print('wall collision test')
-                self.bounce_off_1(self.wall.wall_core_bounce(self.more_coordinates, 1))
-            # wall collision detection
-            # if self.more_coordinates['ball']['ball_y'] >= 300 or self.more_coordinates['ball']['ball_y'] >= -300:
-            #     self.bounce_off_1(self.wall.wall_core_bounce(self.more_coordinates, 1))
-            #     return
-            # else:
+            ################################################ wall collision tests
+            if int(self.ball[0].ycor()) == -280:
+                print('bottom wall collision test')
+                self.ball[0].setheading(150)
+                while self.ball[0].xcor() < 260:
+                    self.ball[0].forward(0.04)
+            elif int(self.ball[0].ycor()) == 280:
+                print('bottom wall collision test')
+                self.ball[0].setheading(210)
+                while self.ball[0].xcor() < 260:
+                    self.ball[0].forward(0.04)
+            ################################################
             self.ball[0].forward(0.04)
         print('after forward from pad1')
         self.more_coordinates['ball']['ball_x'] = math.floor(self.ball[0].xcor())
