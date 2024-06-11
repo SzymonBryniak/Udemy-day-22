@@ -37,15 +37,18 @@ class Ball:
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         self.screen.tracer(2)
         self.ball[0].setheading(angle)
+        print(f'to paddle 2 {self.more_coordinates}')
         while self.ball[0].xcor() < 260: # if ycor == 300 call wall collision function
             ################################################ wall collision tests
             if int(self.ball[0].ycor()) == -280:
                 print('bottom wall collision test')
+                print(f'to paddle 1 {self.more_coordinates}')
                 self.ball[0].setheading(40)
                 while self.ball[0].xcor() < 260:
                     self.ball[0].forward(0.04)
             elif int(self.ball[0].ycor()) == 280:
-                print('bottom wall collision test')
+                print('top wall collision test')
+                print(f'to paddle 1 {self.more_coordinates}')
                 self.ball[0].setheading(330)
                 while self.ball[0].xcor() < 260:
                     self.ball[0].forward(0.04)
@@ -61,19 +64,23 @@ class Ball:
     def bounce_off_1(self, angle): ## paddle1 to paddle2
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         self.screen.tracer(2)
-        print(self.more_coordinates)
+        print(f'to paddle 2 {self.more_coordinates}')
         self.ball[0].setheading(angle)
         while self.ball[0].xcor() > -260:
             ################################################ wall collision tests
             if int(self.ball[0].ycor()) == -280:
                 print('bottom wall collision test')
+                print(f'to paddle 2 {self.more_coordinates}')
                 self.ball[0].setheading(150)
-                while self.ball[0].xcor() < 260:
+                while self.ball[0].xcor() > -260:
+                    print(self.ball[0].xcor())
                     self.ball[0].forward(0.04)
             elif int(self.ball[0].ycor()) == 280:
-                print('bottom wall collision test')
+                print('top wall collision test')
+                print(f'to paddle 2 {self.more_coordinates}')
                 self.ball[0].setheading(210)
-                while self.ball[0].xcor() < 260:
+                while self.ball[0].xcor() < 260: ### the ball continues going forward after 260 for some reason
+                    print(self.ball[0].xcor())
                     self.ball[0].forward(0.04)
             ################################################
             self.ball[0].forward(0.04)
