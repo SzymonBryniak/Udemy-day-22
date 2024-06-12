@@ -1,5 +1,4 @@
 from turtle import Turtle, Screen
-import ball
 STARTING_POSITIONS = [(-280, 20), (-280, 0), (-280, -20)]
 UP = 90
 DOWN = 270
@@ -11,7 +10,6 @@ FORWARD = 20
 class Paddle2:
     def __init__(self, more_coordinates):
         self.more_coordinates = more_coordinates
-        self.ball = ball
         self.screen = Screen()
         self.pad2 = []
         self.create_pad2()

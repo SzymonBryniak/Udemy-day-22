@@ -52,7 +52,8 @@ print(more_coordinates)
 Collision evaluation
 '''
 ######
-
+wall = Wall(more_coordinates)
+wall.wall_bounce_off_1()
 screen.exitonclick()
 
 '''

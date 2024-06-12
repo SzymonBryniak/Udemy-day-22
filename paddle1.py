@@ -1,5 +1,4 @@
 from turtle import Turtle, Screen
-import ball
 from paddle_collision import PadCollision
 # from screen import coordinates # circular import error
 STARTING_POSITIONS = [(280, 20), (280, 0), (280, -20)]
@@ -14,7 +13,6 @@ FORWARD = 20
 
 class Paddle1:
     def __init__(self, more_coordinates):
-        self.ball = ball
         self.screen = Screen()
         self.more_coordinates = more_coordinates
         self.pad1 = []
