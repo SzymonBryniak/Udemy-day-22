@@ -45,7 +45,9 @@ class Ball:
                 ################################################
                 print('bottom wall collision test')
                 print(f'to paddle 1 {self.more_coordinates}')
-                self.ball[0].setheading(self.wall.wall_bounce_off_2())#40d
+                self.angle = self.wall.wall_bounce_off_2()
+                self.ball[0].setheading(self.angle)#40d
+                print(f'self angle test {self.angle}') ## I will use the angle of the last bounce off to generate the angle for the ball bounce off from the wall.
                 while self.ball[0].xcor() < 260:
                     self.ball[0].forward(0.04)
             elif int(self.ball[0].ycor()) == 280:
@@ -68,13 +70,15 @@ class Ball:
         self.screen.tracer(2)
         print(f'to paddle 2 {self.more_coordinates}')
         self.ball[0].setheading(angle)
+        self.more_coordinates['ball']['ball_s'] = angle
+        print(f' ball_s test print {self.more_coordinates['ball']['ball_s']}') ### test ball_s print
         while self.ball[0].xcor() > -260:
             ################################################ wall collision
             if int(self.ball[0].ycor()) == -280:
                 ################################################
                 print('bottom wall collision test')
                 print(f'to paddle 2 {self.more_coordinates}')
-                self.ball[0].setheading(self.wall.wall_bounce_off_1()) #150d
+                self.ball[0].setheading(self.wall.wall_bounce_off_1())#150d
                 while self.ball[0].xcor() > -260:
                     # print(self.ball[0].xcor())
                     self.ball[0].forward(0.04)

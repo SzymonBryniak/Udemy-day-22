@@ -4,7 +4,7 @@ from paddle2 import Paddle2
 from ball import Ball
 from wall_collision import Wall
 
-more_coordinates = {'ball': {'ball_x': 0, 'ball_y': 0},
+more_coordinates = {'ball': {'ball_x': 0, 'ball_y': 0, 'ball_s': 0},
                     'pad1': {
                     'p1x': 0,
                     'p1y': 0,
