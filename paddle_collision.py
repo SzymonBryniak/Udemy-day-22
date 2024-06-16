@@ -15,6 +15,7 @@ class PadCollision:
                 default_angle = 0
             elif i == ball_cor:
                 print(f'ball coordinates pad2 = {i}, angle: {default_angle}')
+                print(f'ball coordinates pad2 = {i}, angle: {default_angle}')
                 return default_angle
             default_angle += 2
         print('game over')

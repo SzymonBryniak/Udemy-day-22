@@ -6,7 +6,7 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
-FORWARD = 20
+FORWARD = 30
 
 # PAD1_COORDINATES = [0, 0, 0, 0]
 
@@ -32,7 +32,7 @@ class Paddle1:
 
     def up(self):
         # self.screen.listen()
-        self.screen.tracer(2)
+        self.screen.tracer(3)
         self.pad1[0].setheading(UP)
         self.pad1[0].forward(FORWARD)
         self.pad1[1].setheading(UP)
@@ -51,7 +51,7 @@ class Paddle1:
         return
 
     def down(self):
-        self.screen.tracer(2)
+        self.screen.tracer(3)
         self.pad1[0].setheading(DOWN)
         self.pad1[0].forward(FORWARD)
         self.pad1[1].setheading(DOWN)
