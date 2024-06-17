@@ -8,23 +8,29 @@ class Wall:
         self.angle_wall2 = 0
 
     def wall_bounce_off_1(self, direction, last_angle):
-        print('wall_collision.py, pad1 side angle')
-        # 150 = 30
+        ## paddle2 to paddle1
         if direction == -280:
-            print(f'last angle:{last_angle}')
-            return 150
+            print(f'from pad1 wall_collision.py, bottom angle 150. last angle: {last_angle}')
+            return 150#
         elif direction == 280:
-            print(f'last angle:{last_angle}')
-            return 210
+            print(f'from pad1 wall_collision.py, top angle 210. last angle {last_angle}')
+            return 180 + (last_angle - 90)# was 210, last angle 90+
+        return self
 
-    def wall_bounce_off_2(self, direction):  # generates the angle value for pad2
-        print('wall_collision.py, pad2 side angle')
+    def wall_bounce_off_2(self, direction, last_angle):  # generates the angle value for pad2
+        ## paddle1 to paddle2
         if direction == -280:
-            return 40
+            print(f'from pad2 wall_collision.py, bottom wall angle returned 40 last angle: {last_angle}')
+            return last_angle - 270 #e.g last angle 272 - 270 = 2 # was 40
+
         elif direction == 280:
-            return 330
-############################################################################################ I want to adjust the below functions to generate more varied angles for bounce offs from the walls
+            print(f' from pad2 wall_collision.py, top angle returned 330 last angle: last angle {last_angle}')
+            return 360 - last_angle #(last was 90 - 0) # was 330
+        return self
+
+########################################################################################## I want to adjust the below functions to generate more varied angles for bounce offs from the walls
 ############################################################################################
+
     def bounce_1(self, range_start, range_end, ball_cor):  # generates the angle value for pad2
         print(f'bounce 1 function range:{range_start}, {range_end}')
         default_angle = 300
@@ -37,7 +43,7 @@ class Wall:
                 return default_angle
             default_angle += 2
         print('game over')
-        return
+        return self
 
     ## I need to consider negative y coordinates of paddles
 
@@ -51,4 +57,4 @@ class Wall:
             else:
                 default_angle -= 2
         print('game over')
-        return
+        return self

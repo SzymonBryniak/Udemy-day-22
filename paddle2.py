@@ -44,7 +44,7 @@ class Paddle2:
         self.more_coordinates['pad2']['p2y1'] = self.pad2[1].ycor()
         self.more_coordinates['pad2']['p2x2'] = self.pad2[2].xcor()
         self.more_coordinates['pad2']['p2y2'] = self.pad2[2].ycor()
-        print(self.pad2[0].xcor(), self.pad2[0].ycor())
+        # print(self.pad2[0].xcor(), self.pad2[0].ycor())
         return
 
     def down(self):
@@ -62,7 +62,7 @@ class Paddle2:
         self.more_coordinates['pad2']['p2y1'] = self.pad2[1].ycor()
         self.more_coordinates['pad2']['p2x2'] = self.pad2[2].xcor()
         self.more_coordinates['pad2']['p2y2'] = self.pad2[2].ycor()
-        print(self.pad2[0].xcor(), self.pad2[0].ycor())
+        # print(self.pad2[0].xcor(), self.pad2[0].ycor())
         return
 
 

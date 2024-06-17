@@ -7,32 +7,31 @@ class PadCollision:
         self.angle_pad2 = 0
 
     def bounce_1(self, range_start, range_end, ball_cor): #generates the angle value for pad2
-        print(f'bounce 1 function range:{range_start}, {range_end}')
+        # print(f'bounce 1 function range:{range_start}, {range_end}')
         default_angle = 300
 
         for i in range(range_start, range_end + 1):
             if default_angle == 360:
                 default_angle = 0
             elif i == ball_cor:
-                print(f'ball coordinates pad2 = {i}, angle: {default_angle}')
-                print(f'ball coordinates pad2 = {i}, angle: {default_angle}')
+                # print(f'ball coordinates pad2 = {i}, angle: {default_angle}')
                 return default_angle
             default_angle += 2
         print('game over')
-        return
+        return self
 ## I need to consider negative y coordinates of paddles
 
     def bounce_2(self, range_start, range_end, ball_cor): #generates the angle value for pad1
-        print(f'bounce 2 function range: {range_start}, {range_end}')
+        # print(f'bounce 2 function range: {range_start}, {range_end}')
         default_angle = 250
         for i in range(range_start, range_end + 1):
             if i == ball_cor:
-                print(f'ball coordinates pad2 = {i}, angle: {default_angle}')
+                # print(f'ball coordinates pad2 = {i}, angle: {default_angle}')
                 return default_angle
             else:
                 default_angle -= 2
         print('game over')
-        return
+        return self
 
     def core_bounce(self, coordinates): ### the core_bounce function may be
         # print('core_bounce function start')
