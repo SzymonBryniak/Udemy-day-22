@@ -4,7 +4,7 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
-FORWARD = 30
+FORWARD = 35
 
 
 class Paddle2:

@@ -6,26 +6,36 @@ class Wall:
         self.ball = [ball_coordinate]
         self.angle_wall1 = 0
         self.angle_wall2 = 0
+        self.angle = 0
 
     def wall_bounce_off_1(self, direction, last_angle):
-        ## paddle2 to paddle1
+        ## paddle1 to paddle2
         if direction == -280:
             print(f'from pad1 wall_collision.py, bottom angle 150. last angle: {last_angle}')
-            return 150#
+            # 180 - (270 - last_angle)
+            return_angle = 180 - (270 - last_angle)# was 150
+            print(f'return angle is {return_angle}')
+            return return_angle
         elif direction == 280:
             print(f'from pad1 wall_collision.py, top angle 210. last angle {last_angle}')
-            return 180 + (last_angle - 90)# was 210, last angle 90+
+            return_angle = 180 + (last_angle - 90)
+            print(f'return angle is {return_angle}')
+            return return_angle# was 210, last angle 90+
         return self
 
     def wall_bounce_off_2(self, direction, last_angle):  # generates the angle value for pad2
-        ## paddle1 to paddle2
+        ## paddle2 to paddle1
         if direction == -280:
             print(f'from pad2 wall_collision.py, bottom wall angle returned 40 last angle: {last_angle}')
-            return last_angle - 270 #e.g last angle 272 - 270 = 2 # was 40
+            return_angle = last_angle - 300 # was minus 270
+            print(f'return angle is {return_angle}')
+            return return_angle #e.g last angle 272 - 270 = 2 # was 40
 
         elif direction == 280:
             print(f' from pad2 wall_collision.py, top angle returned 330 last angle: last angle {last_angle}')
-            return 360 - last_angle #(last was 90 - 0) # was 330
+            return_angle = 360 - last_angle
+            print(f'return angle is {return_angle}')
+            return return_angle #(last was 90 - 0) # was 330
         return self
 
 ########################################################################################## I want to adjust the below functions to generate more varied angles for bounce offs from the walls
