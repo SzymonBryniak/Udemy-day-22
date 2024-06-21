@@ -6,10 +6,10 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
-FORWARD = 35
-
+FORWARD = 20
+PADDLE_TRACER = 312
 # PAD1_COORDINATES = [0, 0, 0, 0]
-
+ts = 10
 
 class Paddle1:
     def __init__(self, more_coordinates):
@@ -32,13 +32,16 @@ class Paddle1:
 
     def up(self):
         # self.screen.listen()
-        self.screen.tracer(3)
+        self.screen.tracer(PADDLE_TRACER)
         self.pad1[0].setheading(UP)
         self.pad1[0].forward(FORWARD)
+        self.pad1[0].speed(ts)
         self.pad1[1].setheading(UP)
         self.pad1[1].forward(FORWARD)
+        self.pad1[1].speed(ts)
         self.pad1[2].setheading(UP)
         self.pad1[2].forward(FORWARD)
+        self.pad1[2].speed(ts)
 
         self.more_coordinates['pad1']['p1x'] = self.pad1[0].xcor()
         self.more_coordinates['pad1']['p1y'] = self.pad1[0].ycor()
@@ -50,11 +53,14 @@ class Paddle1:
         return
 
     def down(self):
-        self.screen.tracer(3)
+        self.screen.tracer(PADDLE_TRACER)
+        self.pad1[0].speed(ts)
         self.pad1[0].setheading(DOWN)
         self.pad1[0].forward(FORWARD)
+        self.pad1[1].speed(ts)
         self.pad1[1].setheading(DOWN)
         self.pad1[1].forward(FORWARD)
+        self.pad1[2].speed(ts)
         self.pad1[2].setheading(DOWN)
         self.pad1[2].forward(FORWARD)
         self.more_coordinates['pad1']['p1x'] = self.pad1[0].xcor()

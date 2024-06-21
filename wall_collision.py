@@ -18,7 +18,7 @@ class Wall:
             return return_angle
         elif direction == 280:
             print(f'from pad1 wall_collision.py, top angle 210. last angle {last_angle}')
-            return_angle = 180 + (last_angle - 90)
+            return_angle = 270 - (last_angle - 90) # was 180
             print(f'return angle is {return_angle}')
             return return_angle# was 210, last angle 90+
         return self
@@ -27,13 +27,13 @@ class Wall:
         ## paddle2 to paddle1
         if direction == -280:
             print(f'from pad2 wall_collision.py, bottom wall angle returned 40 last angle: {last_angle}')
-            return_angle = last_angle - 300 # was minus 270
+            return_angle = last_angle - 280# was minus 270
             print(f'return angle is {return_angle}')
             return return_angle #e.g last angle 272 - 270 = 2 # was 40
 
-        elif direction == 280:
+        elif direction == 280:# 400 + returned, need to fix this
             print(f' from pad2 wall_collision.py, top angle returned 330 last angle: last angle {last_angle}')
-            return_angle = 360 - last_angle
+            return_angle = 270 - (last_angle - 90)
             print(f'return angle is {return_angle}')
             return return_angle #(last was 90 - 0) # was 330
         return self
