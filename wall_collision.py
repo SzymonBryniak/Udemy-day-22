@@ -14,12 +14,15 @@ class Wall:
             print(f'from pad1 wall_collision.py, bottom angle 150. last angle: {last_angle}')
             # 180 - (270 - last_angle)
             return_angle = 180 - (270 - last_angle)# was 150
+            if return_angle < 150:
+                return_angle = 150
             print(f'return angle is {return_angle}')
             return return_angle
         elif direction == 280:
             print(f'from pad1 wall_collision.py, top angle 210. last angle {last_angle}')
             return_angle = 270 - (last_angle - 90) # was 180
             print(f'return angle is {return_angle}')
+
             return return_angle# was 210, last angle 90+
         return self
 
@@ -27,19 +30,20 @@ class Wall:
         ## paddle2 to paddle1
         if direction == -280:
             print(f'from pad2 wall_collision.py, bottom wall angle returned 40 last angle: {last_angle}')
-            return_angle = last_angle - 280# was minus 270
+            return_angle = last_angle - 280# was minus 270 # I might fix this with an if statement
             print(f'return angle is {return_angle}')
+            if return_angle > 40:
+                return_angle = 40
             return return_angle #e.g last angle 272 - 270 = 2 # was 40
 
         elif direction == 280:# 400 + returned, need to fix this
             print(f' from pad2 wall_collision.py, top angle returned 330 last angle: last angle {last_angle}')
-            return_angle = 270 - (last_angle - 90)
+            return_angle = last_angle - 90 # was 270 - (last_angle - 90)
+            if return_angle < 330:
+                return_angle = 330
             print(f'return angle is {return_angle}')
             return return_angle #(last was 90 - 0) # was 330
         return self
-
-########################################################################################## I want to adjust the below functions to generate more varied angles for bounce offs from the walls
-############################################################################################
 
     def bounce_1(self, range_start, range_end, ball_cor):  # generates the angle value for pad2
         print(f'bounce 1 function range:{range_start}, {range_end}')

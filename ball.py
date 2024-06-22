@@ -6,8 +6,8 @@ from paddle_collision import PadCollision
 import math
 from wall_collision import Wall
 STARTING_POSITION = (0, 0)
-BALL_FORWARD = 0.0006
-BALL_TRACER = 312
+BALL_FORWARD = 0.004
+BALL_TRACER = 31
 #I plan to pass coordinates from pads to the ball
 #to make the ball movement stop for 1 ms when
 # pad coordinates will change
@@ -46,7 +46,7 @@ class Ball:
                 ################################################
                 # print('bottom wall collision test')
                 # print(f'to paddle 1 {self.more_coordinates}')
-                print(f'from pad2 bottom wall collision test{angle}')
+                print(f'from pad2 bottom wall collision test:{angle}')
                 angle = self.wall.wall_bounce_off_2(-280, angle)
                 self.ball[0].setheading(angle)#40d
                 # print(f'self angle test {self.angle}') ## I will use the angle of the last bounce off to generate the angle for the ball bounce off from the wall.
@@ -58,7 +58,7 @@ class Ball:
                 # print(f'to paddle 1 {self.more_coordinates}')
                 angle = self.wall.wall_bounce_off_2(280, angle)
                 self.ball[0].setheading(angle)  # 330d
-                print(f'from pad2 top wall collision test{angle}')
+                print(f'from pad2 top wall collision test:{angle}')
                 while self.ball[0].xcor() < 260:
                     self.ball[0].forward(BALL_FORWARD)
 
@@ -80,27 +80,24 @@ class Ball:
         # print(f' ball_s test print {self.more_coordinates['ball']['ball_s']}') ### test ball_s print
         while self.ball[0].xcor() > -260:
             ################################################ wall collision
-
             if int(self.ball[0].ycor()) == -280:
                 ################################################
                 # print(f'to paddle 2 {self.more_coordinates}')
                 print(f'pad1 to pad2 bottom angle:{angle}')
                 angle = self.wall.wall_bounce_off_1(-280, angle) #150d
                 self.ball[0].setheading(angle)  # 150d
-                print(f'from pad1 bottom wall collision test{angle}')
+                print(f'from pad1 bottom wall collision test:{angle}')
                 while self.ball[0].xcor() > -260:
                     self.ball[0].forward(BALL_FORWARD)
-
             elif int(self.ball[0].ycor()) == 280:
                 # print('top wall collision test')
                 # print(f'to paddle 2 {self.more_coordinates}')
                 print(f'pad1 to pad2 top angle:{angle}')
                 angle = self.wall.wall_bounce_off_1(280, angle)  # 210d
                 self.ball[0].setheading(angle)  #
-                print(f'from pad1 top wall collision test{angle}')
+                print(f'from pad1 top wall collision test:{angle}')
                 while self.ball[0].xcor() < -260:
                     self.ball[0].forward(BALL_FORWARD)
-
             self.ball[0].forward(BALL_FORWARD)
             ################################################
         # print('after forward from pad1')
