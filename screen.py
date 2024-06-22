@@ -4,7 +4,7 @@ from paddle2 import Paddle2
 from ball import Ball
 from wall_collision import Wall
 
-more_coordinates = {'ball': {'ball_x': 0, 'ball_y': 0, 'ball_s': 0},
+more_coordinates = {'score': {'pad1': 0, 'pad2': 0}, 'ball': {'ball_x': 0, 'ball_y': 0, 'ball_s': 0},
                     'pad1': {
                     'p1x': 0,
                     'p1y': 0,
@@ -25,12 +25,26 @@ more_coordinates = {'ball': {'ball_x': 0, 'ball_y': 0, 'ball_s': 0},
 
 
 middle = Turtle()
+text1 = Turtle()
+text2 = Turtle()
 screen = Screen()
 screen.listen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
+
 middle.hideturtle()
 middle.color('green')
+text1.color('green')
+text1.hideturtle()
+text1.penup()
+text1.setpos(x=-56, y=200)
+text1.write("0", move=True, align="left", font=("Verdana", 70, "normal",))
+text2.color('green')
+text2.hideturtle()
+text2.penup()
+text2.setpos(x=0, y=200)
+text2.write("0", move=True, align="left", font=("Verdana", 70, "normal",))
+
 middle.setpos(x=0, y=300)
 middle.goto(x=0, y=-300)
 

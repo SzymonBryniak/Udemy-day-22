@@ -15,9 +15,9 @@ BALL_TRACER = 31
 
 class Ball:
     def __init__(self, more_coordinates):
-        self.pad_collision = PadCollision()
         self.more_coordinates = more_coordinates
         self.wall = Wall(more_coordinates)
+        self.pad_collision = PadCollision(more_coordinates)
         self.screen = Screen()
         self.ball_x = 0
         self.ball_y = 0

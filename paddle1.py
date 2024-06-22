@@ -11,13 +11,13 @@ PADDLE_TRACER = 31
 # PAD1_COORDINATES = [0, 0, 0, 0]
 ts = 10
 
+
 class Paddle1:
     def __init__(self, more_coordinates):
         self.screen = Screen()
         self.more_coordinates = more_coordinates
         self.pad1 = []
         self.create_pad1()
-        self.collision = PadCollision()
 
     def create_pad1(self):
         for position in STARTING_POSITIONS:
