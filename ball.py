@@ -36,6 +36,11 @@ class Ball:
         self.top_left()
 
     def bounce_off_2(self, angle): ## paddle2 to paddle1
+        if angle == 0 or None:
+            print('pad2 lost')
+            del self.ball[0]
+            user_input = input('Would you like to continue?: ')
+
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         self.screen.tracer(BALL_TRACER)
         self.ball[0].setheading(angle)
@@ -72,6 +77,12 @@ class Ball:
         return
 
     def bounce_off_1(self, angle): ## paddle1 to paddle2
+        # if angle == 0 > end game
+        if angle == 0 or None:
+            print('pad1 loses')
+            del self.ball[0]
+            user_input = input('Would you like to continue?: ')
+
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         self.screen.tracer(BALL_TRACER)
         # print(f'to paddle 2 {self.more_coordinates}')
