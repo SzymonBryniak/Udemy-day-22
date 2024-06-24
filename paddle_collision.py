@@ -17,14 +17,13 @@ class PadCollision:
                 default_angle = 0
             elif i == ball_cor:
                 # print(f'ball coordinates pad2 = {i}, angle: {default_angle}')
+                self.coordinates['score']['pad1'] += 1
                 return default_angle
             default_angle += 1.8
         print('point for pad1')
-        self.coordinates['score']['pad1'] += 1
+
         default_angle = 0
         return default_angle
-
-
 
     def bounce_2(self, range_start, range_end, ball_cor): #generates the angle value for pad1
         # print(f'bounce 2 function range: {range_start}, {range_end}')

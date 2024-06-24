@@ -24,6 +24,8 @@ class Ball:
         self.ball = []
         self.angle = 0
         self.last_angle = 0
+        self.pad1_score = 0
+        self.pad2_score = 0
 
     def create_ball(self):
         new_segment = Turtle('circle')
@@ -35,16 +37,20 @@ class Ball:
         # self.ball_start()
         self.top_left()
 
-    def bounce_off_2(self, angle): ## paddle2 to paddle1
+    def on(self, coordinates):
+        coordinates['game_on'] = True
+        return
+
+    def bounce_off_2(self, angle):  # paddle2 to paddle1
         if angle == 0 or None:
             print('pad2 lost')
             del self.ball[0]
+            self.pad1_score += 1
             user_input = input('Would you like to continue?: ')
-
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         self.screen.tracer(BALL_TRACER)
         self.ball[0].setheading(angle)
-        while self.ball[0].xcor() < 260:# if ycor == 300 call wall collision function
+        while self.ball[0].xcor() < 260:  # if ycor == 300 call wall collision function
             ################################################
 
             if int(self.ball[0].ycor()) == -280:
@@ -54,7 +60,7 @@ class Ball:
                 print(f'from pad2 bottom wall collision test:{angle}')
                 angle = self.wall.wall_bounce_off_2(-280, angle)
                 self.ball[0].setheading(angle)#40d
-                # print(f'self angle test {self.angle}') ## I will use the angle of the last bounce off to generate the angle for the ball bounce off from the wall.
+                # print(f'self angle test {self.angle}')  # I will use the angle of the last bounce off to generate the angle for the ball bounce off from the wall.
                 while self.ball[0].xcor() < 260:
                     self.ball[0].forward(BALL_FORWARD)
 
@@ -73,14 +79,17 @@ class Ball:
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         # print('after forward from pad 2')
         # print(f'bounce off pad 2{self.more_coordinates}')
+        self.pad2_score += 1
+        print(self.pad2_score)
         self.bounce_off_1(self.pad_collision.core_bounce(self.more_coordinates))
         return
 
     def bounce_off_1(self, angle): ## paddle1 to paddle2
         # if angle == 0 > end game
         if angle == 0 or None:
-            print('pad1 loses')
+            print('pad1 lost')
             del self.ball[0]
+            self.pad2_score += 1
             user_input = input('Would you like to continue?: ')
 
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
@@ -115,6 +124,8 @@ class Ball:
         self.more_coordinates['ball']['ball_x'] = math.floor(self.ball[0].xcor())
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         # print(f'bounce off pad 1 {self.more_coordinates}')
+        self.pad1_score += 1
+        print(self.pad1_score)
         self.bounce_off_2(self.pad_collision.core_bounce(self.more_coordinates))
         return
 

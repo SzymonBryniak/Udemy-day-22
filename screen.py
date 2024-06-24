@@ -4,7 +4,7 @@ from paddle2 import Paddle2
 from ball import Ball
 from wall_collision import Wall
 
-more_coordinates = {'score': {'pad1': 1, 'pad2': 0}, 'ball': {'ball_x': 0, 'ball_y': 0, 'ball_s': 0},
+more_coordinates = {'game_on': False, 'score': {'pad1': 1, 'pad2': 0}, 'ball': {'ball_x': 0, 'ball_y': 0, 'ball_s': 0},
                     'pad1': {
                     'p1x': 0,
                     'p1y': 0,
@@ -22,19 +22,30 @@ more_coordinates = {'score': {'pad1': 1, 'pad2': 0}, 'ball': {'ball_x': 0, 'ball
                     'p2y2': 0,
                     }
                     }
-
+game_on = False
+screen = Screen()
+screen.setup(width=600, height=600)
+screen.bgcolor("black")
+screen.listen()
 prompt = Turtle()
 middle = Turtle()
 text1 = Turtle()
 text2 = Turtle()
-screen = Screen()
-screen.listen()
-screen.setup(width=600, height=600)
-screen.bgcolor("black")
-score1 = str(more_coordinates['score']['pad1'])
-score2 = str(more_coordinates['score']['pad2'])
-middle.hideturtle()
-middle.color('green')
+pad1 = Paddle1(more_coordinates)
+pad2 = Paddle2(more_coordinates)
+ball = Ball(more_coordinates)
+score1 = ball.pad1_score
+score2 = more_coordinates['score']['pad2']
+
+# while not more_coordinates['game_on']:
+#     print('press the "UP" key to start the game')
+#     screen.onkeypress(ball.on(more_coordinates), key='Up')
+
+# while not more_coordinates['game_on']:
+#     screen.onkeypress(pad1.up, key='Up')
+
+ball.on(more_coordinates)
+print(more_coordinates['game_on'])
 text1.color('green')
 text1.hideturtle()
 text1.penup()
@@ -45,13 +56,14 @@ text2.hideturtle()
 text2.penup()
 text2.setpos(x=0, y=200)
 text2.write(score2, move=True, align="left", font=("Verdana", 70, "normal",))
+middle.hideturtle()
+middle.color('green')
+
 middle.setpos(x=0, y=300)
 middle.goto(x=0, y=-300)
 
 ######
-pad1 = Paddle1(more_coordinates)
-pad2 = Paddle2(more_coordinates)
-ball = Ball(more_coordinates)
+
 ##### I might start the game on key press
 
 
@@ -60,6 +72,7 @@ screen.onkeypress(pad1.down, key='Down')
 screen.onkeypress(pad2.up, key='w')
 screen.onkeypress(pad2.down, key='s')
 ball.create_ball()
+
 
 ##### evaluate ball and pad coordinates
 # collision.pad_collision(dict_coordinates)

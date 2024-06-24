@@ -22,7 +22,6 @@ class Wall:
             print(f'from pad1 wall_collision.py, top angle 210. last angle {last_angle}')
             return_angle = 270 - (last_angle - 90) # was 180
             print(f'return angle is {return_angle}')
-
             return return_angle# was 210, last angle 90+
         return self
 
