@@ -41,11 +41,8 @@ score2 = more_coordinates['score']['pad2']
 #     print('press the "UP" key to start the game')
 #     screen.onkeypress(ball.on(more_coordinates), key='Up')
 
-# while not more_coordinates['game_on']:
-#     screen.onkeypress(pad1.up, key='Up')
 
-ball.on(more_coordinates)
-print(more_coordinates['game_on'])
+
 text1.color('green')
 text1.hideturtle()
 text1.penup()
