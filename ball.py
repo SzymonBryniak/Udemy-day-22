@@ -97,7 +97,7 @@ class Ball:
             del self.ball[0]
             self.pad2_score += 1
             self.start()
-        self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
+        self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())  #  self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         self.screen.tracer(BALL_TRACER)
         # print(f'to paddle 2 {self.more_coordinates}')
         self.ball[0].setheading(angle)

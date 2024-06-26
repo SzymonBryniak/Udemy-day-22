@@ -70,16 +70,29 @@ class Game:
 
         pass
 
+    def start2(self):
+        screen.onkeypress(pad1.up, key='Up')
+        screen.onkeypress(pad1.down, key='Down')
+        screen.onkeypress(pad2.up, key='w')
+        screen.onkeypress(pad2.down, key='s')
+        val = ball.create_ball()
+        self.start1()
+        # if val == 'Yes':
+        #     self.start1()
+        #     ball.top_left()
+        #     return self
+
     def start1(self):
         screen.onkeypress(pad1.up, key='Up')
         screen.onkeypress(pad1.down, key='Down')
         screen.onkeypress(pad2.up, key='w')
         screen.onkeypress(pad2.down, key='s')
         val = ball.create_ball()
-        if val == 'Yes':
-            ball.delete_ball()
-            ball.top_left()
-        return self
+        self.start2()
+        # if val == 'Yes':
+        #     self.start2()
+        #     ball.top_left()
+        #     return self
 
 
 game = Game()
