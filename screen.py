@@ -42,7 +42,6 @@ score2 = more_coordinates['score']['pad2']
 #     screen.onkeypress(ball.on(more_coordinates), key='Up')
 
 
-
 text1.color('green')
 text1.hideturtle()
 text1.penup()
@@ -55,25 +54,43 @@ text2.setpos(x=0, y=200)
 text2.write(score2, move=True, align="left", font=("Verdana", 70, "normal",))
 middle.hideturtle()
 middle.color('green')
-
 middle.setpos(x=0, y=300)
 middle.goto(x=0, y=-300)
 
-######
 
-##### I might start the game on key press
-
-
-screen.onkeypress(pad1.up, key='Up')
-screen.onkeypress(pad1.down, key='Down')
-screen.onkeypress(pad2.up, key='w')
-screen.onkeypress(pad2.down, key='s')
-ball.create_ball()
+def start(self):
+    self.screen.textinput("NIM", "Would you like to continue?: ")
+    print(self.ball[0])
+    self.create_ball()
+    return
 
 
-##### evaluate ball and pad coordinates
-# collision.pad_collision(dict_coordinates)
-print(more_coordinates)
+class Game:
+    def __init__(self):
+
+        pass
+
+    def start1(self):
+        screen.onkeypress(pad1.up, key='Up')
+        screen.onkeypress(pad1.down, key='Down')
+        screen.onkeypress(pad2.up, key='w')
+        screen.onkeypress(pad2.down, key='s')
+        val = ball.create_ball()
+        if val == 'Yes':
+            ball.delete_ball()
+            ball.top_left()
+        return self
+
+
+game = Game()
+game.start1()
+
+
+
+
+
+
+
 
 '''
 Collision evaluation

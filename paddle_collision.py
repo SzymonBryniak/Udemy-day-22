@@ -7,7 +7,7 @@ class PadCollision:
         self.angle_pad2 = 0
         self.coordinates = coordinates
 
-    def bounce_1(self, range_start, range_end, ball_cor): #generates the angle value for pad2
+    def bounce_1(self, range_start, range_end, ball_cor):  # generates the angle value for pad2
         # print(f'bounce 1 function range:{range_start}, {range_end}')
         default_angle = 300
         print(f'pad2 start:{range_start}, pad2 end:{range_end}')
@@ -41,9 +41,6 @@ class PadCollision:
         self.coordinates['score']['pad2'] += 1
         default_angle = 0
         return default_angle
-
-
-
 
     def core_bounce(self, coordinates): ### the core_bounce function may be
         # print('core_bounce function start')

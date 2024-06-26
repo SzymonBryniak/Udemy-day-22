@@ -37,18 +37,22 @@ class Ball:
         # self.ball_start()
         self.top_left()
 
-    def restart(self):
-        self.screen.textinput("NIM", "Would you like to continue?: ")
-        self.ball.clear()
-        self.create_ball()
-        return
+    def delete_ball(self):
+        del self.ball[0]
+        pass
+
+    def start(self):
+        user_input = self.screen.textinput("NIM", "Would you like to continue?: ")
+        # print(self.ball[0])
+        print(user_input)
+        return user_input
 
     def bounce_off_2(self, angle):  # paddle2 to paddle1
         if angle == 0 or None:
             print('pad2 lost')
             del self.ball[0]
             self.pad1_score += 1
-            self.restart()
+            self.start()
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         self.screen.tracer(BALL_TRACER)
         self.ball[0].setheading(angle)
@@ -86,13 +90,13 @@ class Ball:
         self.bounce_off_1(self.pad_collision.core_bounce(self.more_coordinates))
         return
 
-    def bounce_off_1(self, angle): ## paddle1 to paddle2
+    def bounce_off_1(self, angle):  # paddle1 to paddle2
         # if angle == 0 > end game
         if angle == 0 or None:
             print('pad1 lost')
             del self.ball[0]
             self.pad2_score += 1
-            self.restart()
+            self.start()
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         self.screen.tracer(BALL_TRACER)
         # print(f'to paddle 2 {self.more_coordinates}')
@@ -100,7 +104,7 @@ class Ball:
         self.more_coordinates['ball']['ball_s'] = angle
         # print(f' ball_s test print {self.more_coordinates['ball']['ball_s']}') ### test ball_s print
         while self.ball[0].xcor() > -260:
-            ################################################ wall collision
+
             if int(self.ball[0].ycor()) == -280:
                 ################################################
                 # print(f'to paddle 2 {self.more_coordinates}')
@@ -205,4 +209,3 @@ class Ball:
         self.bounce_off_1(self.angle)
         return
 
-# 0
