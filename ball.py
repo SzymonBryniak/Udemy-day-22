@@ -22,6 +22,7 @@ class Ball:
         self.ball_x = 0
         self.ball_y = 0
         self.ball = []
+        self.ball2 = []
         self.angle = 0
         self.last_angle = 0
         self.pad1_score = 0
@@ -34,6 +35,16 @@ class Ball:
         new_segment.penup()
         new_segment.goto(x=0, y=0)
         self.ball.append(new_segment)
+        # self.ball_start()
+        self.top_left()
+
+    def create_ball2(self):
+        new_segment = Turtle('circle')
+        new_segment.color('green')
+        new_segment.color('green')
+        new_segment.penup()
+        new_segment.goto(x=0, y=0)
+        self.ball2.append(new_segment)
         # self.ball_start()
         self.top_left()
 

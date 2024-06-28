@@ -75,8 +75,8 @@ class Game:
         screen.onkeypress(pad1.down, key='Down')
         screen.onkeypress(pad2.up, key='w')
         screen.onkeypress(pad2.down, key='s')
-        val = ball.create_ball()
-        self.start1()
+        val = ball.top_left()
+        # self.start1()
         # if val == 'Yes':
         #     self.start1()
         #     ball.top_left()
