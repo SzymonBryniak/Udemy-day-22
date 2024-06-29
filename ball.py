@@ -35,28 +35,18 @@ class Ball:
         new_segment.penup()
         new_segment.goto(x=0, y=0)
         self.ball.append(new_segment)
+        print(self.ball)
         # self.ball_start()
         self.top_left()
-
-    def create_ball2(self):
-        new_segment = Turtle('circle')
-        new_segment.color('green')
-        new_segment.color('green')
-        new_segment.penup()
-        new_segment.goto(x=0, y=0)
-        self.ball2.append(new_segment)
-        # self.ball_start()
-        self.top_left()
-
-    def delete_ball(self):
-        del self.ball[0]
-        pass
 
     def start(self):
         user_input = self.screen.textinput("NIM", "Would you like to continue?: ")
-        # print(self.ball[0])
-        print(user_input)
-        return user_input
+        if user_input == 'Yes':
+            # self.ball[0].clear()
+            self.create_ball()
+        else:
+            print('Game Over')
+            return
 
     def bounce_off_2(self, angle):  # paddle2 to paddle1
         if angle == 0 or None:
