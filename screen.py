@@ -4,7 +4,7 @@ from paddle2 import Paddle2
 from ball import Ball
 from wall_collision import Wall
 
-more_coordinates = {'game_on': False, 'score': {'pad1': 1, 'pad2': 0}, 'ball': {'ball_x': 0, 'ball_y': 0, 'ball_s': 0},
+more_coordinates = {'object': False, 'score': {'pad1': 1, 'pad2': 0}, 'ball': {'ball_x': 0, 'ball_y': 0, 'ball_s': 0},
                     'pad1': {
                     'p1x': 0,
                     'p1y': 0,
@@ -70,15 +70,31 @@ class Game:
 
         pass
 
+    def restart(self):
+        user_input = screen.textinput("NIM", "Would you like to continue?: ")
+        screen.onkeypress(pad1.up, key='Up')
+        screen.onkeypress(pad1.down, key='Down')
+        screen.onkeypress(pad2.up, key='w')
+        screen.onkeypress(pad2.down, key='s')
+        if user_input == 'Yes':
+            # self.ball[0].clear()
+            print(' restart function working')
+            ball.create_ball()
+            self.restart()
+        else:
+            print('Game Over')
+            return
+
     def start(self):
+        to_restart = 0
         screen.onkeypress(pad1.up, key='Up')
         screen.onkeypress(pad1.down, key='Down')
         screen.onkeypress(pad2.up, key='w')
         screen.onkeypress(pad2.down, key='s')
         val = ball.create_ball()
-        if val == 'Yes':
-            val1 = ball.create_ball()
-
+        if val == 1:
+            print(f' restart value = {val}')
+            self.restart()
             return self
 
 
