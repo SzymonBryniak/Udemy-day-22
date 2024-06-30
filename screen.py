@@ -30,29 +30,18 @@ screen.bgcolor("black")
 screen.listen()
 prompt = Screen()
 middle = Turtle()
-text1 = Turtle()
-text2 = Turtle()
+
 pad1 = Paddle1(more_coordinates)
 pad2 = Paddle2(more_coordinates)
 ball = Ball(more_coordinates)
-score1 = ball.pad1_score
-score2 = more_coordinates['score']['pad2']
+
 
 # while not more_coordinates['game_on']:
 #     print('press the "UP" key to start the game')
 #     screen.onkeypress(ball.on(more_coordinates), key='Up')
 
 
-text1.color('green')
-text1.hideturtle()
-text1.penup()
-text1.setpos(x=-56, y=200)
-text1.write(score1, move=True, align="left", font=("Verdana", 70, "normal",))
-text2.color('green')
-text2.hideturtle()
-text2.penup()
-text2.setpos(x=0, y=200)
-text2.write(score2, move=True, align="left", font=("Verdana", 70, "normal",))
+
 middle.hideturtle()
 middle.color('green')
 middle.setpos(x=0, y=300)
@@ -68,13 +57,29 @@ def start(self):
 
 class Game:
     def __init__(self):
-        # screen.onkeypress(pad1.up, key='Up')
-        # screen.onkeypress(pad1.down, key='Down')
-        # screen.onkeypress(pad2.up, key='w')
-        # screen.onkeypress(pad2.down, key='s')
+        # self.score1 = ball.pad1_score
+        # self.score2 = more_coordinates['score']['pad2']
+        self.score1 = ball.pad1_score
+        self.score2 = more_coordinates['score']['pad2']
+        self.text1 = Turtle()
+        self.text2 = Turtle()
+        self.text1.color('green')
+        self.text1.hideturtle()
+        self.text1.penup()
+        self.text1.setpos(x=-56, y=200)
+        self.text1.write(self.score1, move=True, align="left", font=("Verdana", 70, "normal",))
+        self.text2.color('green')
+        self.text2.hideturtle()
+        self.text2.penup()
+        self.text2.setpos(x=0, y=200)
+        self.text2.write(self.score2, move=True, align="left", font=("Verdana", 70, "normal",))
+        pass
+
+    def update_score(self):
         pass
 
     def restart(self):
+        self.score1 += 1
         # user_input = prompt.textinput("NIM", "Would you like to continue?: ")
         user_input = input("Would you like to continue?: ")
         if user_input == 'Yes':
