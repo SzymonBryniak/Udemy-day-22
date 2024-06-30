@@ -27,9 +27,10 @@ class Ball:
         self.last_angle = 0
         self.pad1_score = 0
         self.pad2_score = 0
+        self.score = [self.pad1_score, self.pad2_score]
 
     def create_ball(self):
-        self.screen.update()
+        # self.screen.update()
         new_segment = Turtle('circle')
         new_segment.color('green')
         new_segment.color('green')
@@ -40,6 +41,11 @@ class Ball:
         # self.ball_start()
         self.top_left()  # this may need to return something
         return 1
+
+    def get_score(self):
+        score = self.score
+        print(f' ball module score: {score}')
+        return score
 
     def top_left(self):
         self.screen.tracer(BALL_TRACER)

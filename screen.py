@@ -79,7 +79,10 @@ class Game:
         user_input = input("Would you like to continue?: ")
         if user_input == 'Yes':
             print(' restart function working')
+            score = ball.get_score()
+            print(score)
             ball.ball[0].reset()
+            screen.update()
             ball.create_ball()
             self.restart()
         else:
