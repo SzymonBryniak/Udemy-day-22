@@ -24,10 +24,11 @@ more_coordinates = {'object': False, 'score': {'pad1': 1, 'pad2': 0}, 'ball': {'
                     }
 game_on = False
 screen = Screen()
+
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.listen()
-prompt = Turtle()
+prompt = Screen()
 middle = Turtle()
 text1 = Turtle()
 text2 = Turtle()
@@ -67,18 +68,18 @@ def start(self):
 
 class Game:
     def __init__(self):
-
+        # screen.onkeypress(pad1.up, key='Up')
+        # screen.onkeypress(pad1.down, key='Down')
+        # screen.onkeypress(pad2.up, key='w')
+        # screen.onkeypress(pad2.down, key='s')
         pass
 
     def restart(self):
-        user_input = screen.textinput("NIM", "Would you like to continue?: ")
-        screen.onkeypress(pad1.up, key='Up')
-        screen.onkeypress(pad1.down, key='Down')
-        screen.onkeypress(pad2.up, key='w')
-        screen.onkeypress(pad2.down, key='s')
+        # user_input = prompt.textinput("NIM", "Would you like to continue?: ")
+        user_input = input("Would you like to continue?: ")
         if user_input == 'Yes':
-            # self.ball[0].clear()
             print(' restart function working')
+            ball.ball[0].reset()
             ball.create_ball()
             self.restart()
         else:
@@ -91,11 +92,8 @@ class Game:
         screen.onkeypress(pad1.down, key='Down')
         screen.onkeypress(pad2.up, key='w')
         screen.onkeypress(pad2.down, key='s')
-        val = ball.create_ball()
-        if val == 1:
-            print(f' restart value = {val}')
-            self.restart()
-            return self
+        ball.create_ball()
+        self.restart()
 
 
 game = Game()

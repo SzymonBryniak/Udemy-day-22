@@ -29,12 +29,13 @@ class Ball:
         self.pad2_score = 0
 
     def create_ball(self):
+        self.screen.update()
         new_segment = Turtle('circle')
         new_segment.color('green')
         new_segment.color('green')
         new_segment.penup()
         new_segment.goto(x=0, y=0)
-        self.ball.append(new_segment)
+        self.ball.insert(0, new_segment)
         print(self.ball)
         # self.ball_start()
         self.top_left()  # this may need to return something
@@ -58,7 +59,7 @@ class Ball:
     def bounce_off_2(self, angle):  # paddle2 to paddle1
         if angle == 0 or None:
             print('pad2 lost')
-            del self.ball[0]
+            self.ball[0].clear()
             self.pad1_score += 1
             print('about to return one')
             return 1
@@ -104,7 +105,7 @@ class Ball:
         # if angle == 0 > end game
         if angle == 0 or None:
             print('pad1 lost')
-            del self.ball[0]
+            self.ball[0].clear()
             self.pad2_score += 1
             # self.restart()
             print(' about to return 1')
