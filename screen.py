@@ -57,6 +57,7 @@ def start(self):
 
 class Game:
     def __init__(self):
+        self.coordinates = more_coordinates
         # self.score1 = ball.pad1_score
         # self.score2 = more_coordinates['score']['pad2']
         self.score1 = ball.pad1_score
@@ -66,25 +67,27 @@ class Game:
         self.text1.color('green')
         self.text1.hideturtle()
         self.text1.penup()
-        self.text1.setpos(x=-56, y=200)
-        self.text1.write(self.score1, move=True, align="left", font=("Verdana", 70, "normal",))
         self.text2.color('green')
         self.text2.hideturtle()
         self.text2.penup()
-        self.text2.setpos(x=0, y=200)
-        self.text2.write(self.score2, move=True, align="left", font=("Verdana", 70, "normal",))
         pass
 
-    def update_score(self):
+    def update_score(self, score1=0, score2=0):
+        self.text1.clear()
+        self.text2.clear()
+        self.text1.setpos(x=-56, y=200)
+        self.text2.setpos(x=0, y=200)
+        self.text1.write(score1, move=True, align="left", font=("Verdana", 70, "normal",))
+        self.text2.write(score2, move=True, align="left", font=("Verdana", 70, "normal",))
         pass
 
     def restart(self):
-        self.score1 += 1
         # user_input = prompt.textinput("NIM", "Would you like to continue?: ")
         user_input = input("Would you like to continue?: ")
         if user_input == 'Yes':
+            self.update_score()
             print(' restart function working')
-            score = ball.get_score()
+            score = ball.pad_score()
             print(score)
             ball.ball[0].reset()
             screen.update()
@@ -95,7 +98,7 @@ class Game:
             return
 
     def start(self):
-        to_restart = 0
+        self.update_score()
         screen.onkeypress(pad1.up, key='Up')
         screen.onkeypress(pad1.down, key='Down')
         screen.onkeypress(pad2.up, key='w')

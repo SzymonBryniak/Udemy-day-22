@@ -42,10 +42,11 @@ class Ball:
         self.top_left()  # this may need to return something
         return 1
 
-    def get_score(self):
-        score = self.score
-        print(f' ball module score: {score}')
-        return score
+    def pad_score(self, score1=0, score2=0):
+
+        self.more_coordinates['pad1'][0] += score1
+        self.more_coordinates['pad2'][0] += score2
+        return
 
     def top_left(self):
         self.screen.tracer(BALL_TRACER)
@@ -64,7 +65,9 @@ class Ball:
 
     def bounce_off_2(self, angle):  # paddle2 to paddle1
         if angle == 0 or None:
+
             print('pad2 lost')
+            self.pad_score(score1=1, score2=0)
             self.ball[0].clear()
             self.pad1_score += 1
             print('about to return one')
