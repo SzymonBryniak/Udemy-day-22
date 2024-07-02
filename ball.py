@@ -38,7 +38,7 @@ class Ball:
         self.ball.insert(0, new_segment)
         print(self.ball)
         self.top_left()  # this may need to return something
-        return 1
+        return
 
     def pad_score(self, score1=0, score2=0):
         self.pad1_score += score1
@@ -62,7 +62,7 @@ class Ball:
 
     def bounce_off_2(self, angle):  # paddle2 to paddle1
         if angle == 0 or None:
-            self.pad1_score += 1
+            self.pad2_score += 1
             print('pad2 lost')
             self.ball[0].clear()
             print(self.pad1_score)
@@ -96,7 +96,7 @@ class Ball:
     def bounce_off_1(self, angle):  # paddle1 to paddle2
         # if angle == 0 > end game
         if angle == 0 or None:
-            self.pad2_score += 1
+            self.pad1_score += 1
             print('pad1 lost')
             self.ball[0].clear()
             print(f'pad2 score: {self.pad2_score}')
