@@ -33,7 +33,7 @@ middle = Turtle()
 
 pad1 = Paddle1(more_coordinates)
 pad2 = Paddle2(more_coordinates)
-ball = Ball(more_coordinates)
+
 
 
 # while not more_coordinates['game_on']:
@@ -60,8 +60,7 @@ class Game:
         self.coordinates = more_coordinates
         # self.score1 = ball.pad1_score
         # self.score2 = more_coordinates['score']['pad2']
-        self.score1 = ball.pad1_score
-        self.score2 = more_coordinates['score']['pad2']
+        self.ball = Ball(more_coordinates)
         self.text1 = Turtle()
         self.text2 = Turtle()
         self.text1.color('green')
@@ -77,21 +76,19 @@ class Game:
         self.text2.clear()
         self.text1.setpos(x=-56, y=200)
         self.text2.setpos(x=0, y=200)
-        self.text1.write(score1, move=True, align="left", font=("Verdana", 70, "normal",))
-        self.text2.write(score2, move=True, align="left", font=("Verdana", 70, "normal",))
+        self.text1.write(self.ball.pad1_score, move=True, align="left", font=("Verdana", 70, "normal",))
+        self.text2.write(self.ball.pad2_score, move=True, align="left", font=("Verdana", 70, "normal",))
         pass
 
     def restart(self):
+        self.update_score()
         # user_input = prompt.textinput("NIM", "Would you like to continue?: ")
         user_input = input("Would you like to continue?: ")
         if user_input == 'Yes':
-            self.update_score()
             print(' restart function working')
-            score = ball.pad_score()
-            print(score)
-            ball.ball[0].reset()
+            self.ball.ball[0].reset()
             screen.update()
-            ball.create_ball()
+            self.ball.create_ball()
             self.restart()
         else:
             print('Game Over')
@@ -103,7 +100,7 @@ class Game:
         screen.onkeypress(pad1.down, key='Down')
         screen.onkeypress(pad2.up, key='w')
         screen.onkeypress(pad2.down, key='s')
-        ball.create_ball()
+        self.ball.create_ball()
         self.restart()
 
 
