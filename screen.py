@@ -58,8 +58,6 @@ def start(self):
 class Game:
     def __init__(self):
         self.coordinates = more_coordinates
-        # self.score1 = ball.pad1_score
-        # self.score2 = more_coordinates['score']['pad2']
         self.ball = Ball(more_coordinates)
         self.text1 = Turtle()
         self.text2 = Turtle()
@@ -69,6 +67,8 @@ class Game:
         self.text2.color('green')
         self.text2.hideturtle()
         self.text2.penup()
+        self.pad1score = 0
+        self.pad2score = 0
         pass
 
     def update_score(self, score1=0, score2=0):
@@ -76,31 +76,33 @@ class Game:
         self.text2.clear()
         self.text1.setpos(x=-56, y=200)
         self.text2.setpos(x=0, y=200)
-        self.text1.write(self.ball.pad1_score, move=True, align="left", font=("Verdana", 70, "normal",))
-        self.text2.write(self.ball.pad2_score, move=True, align="left", font=("Verdana", 70, "normal",))
-        pass
+        self.text1.write(self.pad1score, move=True, align="left", font=("Verdana", 70, "normal",))
+        self.text2.write(self.pad2score, move=True, align="left", font=("Verdana", 70, "normal",))
 
     def restart(self):
         self.update_score()
         # user_input = prompt.textinput("NIM", "Would you like to continue?: ")
         user_input = input("Would you like to continue?: ")
         if user_input == 'Yes':
-            print(' restart function working')
             self.ball.ball[0].reset()
-            screen.update()
-            self.ball.create_ball()
+            screen.update()  # ?
+            val = self.ball.create_ball()
+            print(f' ball returned: {val}')
+
             self.restart()
         else:
             print('Game Over')
             return
 
     def start(self):
-        self.update_score()
         screen.onkeypress(pad1.up, key='Up')
         screen.onkeypress(pad1.down, key='Down')
         screen.onkeypress(pad2.up, key='w')
         screen.onkeypress(pad2.down, key='s')
-        self.ball.create_ball()
+        val = self.ball.create_ball()
+        print(f' ball returned: {val}')
+        print(f'Start return value is: {val}')
+        self.update_score()
         self.restart()
 
 

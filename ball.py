@@ -37,13 +37,8 @@ class Ball:
         new_segment.goto(x=0, y=0)
         self.ball.insert(0, new_segment)
         print(self.ball)
-        self.top_left()  # this may need to return something
-        return
-
-    def pad_score(self, score1=0, score2=0):
-        self.pad1_score += score1
-        self.pad2_score += score2
-        return
+          # this may need to return something
+        return self.top_left()
 
     def top_left(self):
         self.screen.tracer(BALL_TRACER)
@@ -58,7 +53,9 @@ class Ball:
         self.more_coordinates['ball']['ball_x'] = math.floor(self.ball[0].xcor())
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         angle = int(self.pad_collision.core_bounce(self.more_coordinates))
-        self.bounce_off_2(angle)  # to return a value for the screen module
+          # to return a value for the screen module
+        self.bounce_off_2(angle)
+        return [self.pad1_score, self.pad2_score]
 
     def bounce_off_2(self, angle):  # paddle2 to paddle1
         if angle == 0 or None:
@@ -66,8 +63,8 @@ class Ball:
             print('pad2 lost')
             self.ball[0].clear()
             print(self.pad1_score)
-            print(f'pad1 score: {self.pad1_score}')
-            return
+            print(f'pad2 score: {self.pad2_score}, pad1 score{self.pad1_score}')
+            return self.pad2_score
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         self.screen.tracer(BALL_TRACER)
         self.ball[0].setheading(angle)
@@ -76,7 +73,7 @@ class Ball:
             if int(self.ball[0].ycor()) == -280:
                 print(f'from pad2 bottom wall collision test:{angle}')
                 angle = self.wall.wall_bounce_off_2(-280, angle)
-                self.ball[0].setheading(angle)#40d
+                self.ball[0].setheading(angle)  # 40d
                 while self.ball[0].xcor() < 260:
                     self.ball[0].forward(BALL_FORWARD)
 
@@ -90,8 +87,7 @@ class Ball:
             self.ball[0].forward(BALL_FORWARD)
         self.more_coordinates['ball']['ball_x'] = math.floor(self.ball[0].xcor())
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
-        self.bounce_off_1(self.pad_collision.core_bounce(self.more_coordinates))
-        return
+        return self.bounce_off_1(self.pad_collision.core_bounce(self.more_coordinates))
 
     def bounce_off_1(self, angle):  # paddle1 to paddle2
         # if angle == 0 > end game
@@ -99,8 +95,8 @@ class Ball:
             self.pad1_score += 1
             print('pad1 lost')
             self.ball[0].clear()
-            print(f'pad2 score: {self.pad2_score}')
-            return
+            print(f'pad2 score: {self.pad2_score}, pad1 score{self.pad1_score}')
+            return self.pad1_score
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())  #  self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         self.screen.tracer(BALL_TRACER)
         self.ball[0].setheading(angle)
@@ -124,8 +120,7 @@ class Ball:
             self.ball[0].forward(BALL_FORWARD)
         self.more_coordinates['ball']['ball_x'] = math.floor(self.ball[0].xcor())
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
-        self.bounce_off_2(self.pad_collision.core_bounce(self.more_coordinates))
-        return
+        return self.bounce_off_2(self.pad_collision.core_bounce(self.more_coordinates))
 
     # def ball_start(self):
     #     direction = random.randint(1, 4)
