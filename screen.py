@@ -88,18 +88,22 @@ class Game:
             screen.update()  # ?
             val = self.ball.create_ball()
             print(f' ball returned: {val}')
-
+            self.pad1score = val[0]
+            self.pad2score = val[1]
             self.restart()
         else:
             print('Game Over')
             return
 
     def start(self):
+        self.update_score()
         screen.onkeypress(pad1.up, key='Up')
         screen.onkeypress(pad1.down, key='Down')
         screen.onkeypress(pad2.up, key='w')
         screen.onkeypress(pad2.down, key='s')
         val = self.ball.create_ball()
+        self.pad1score = val[0]
+        self.pad2score = val[1]
         print(f' ball returned: {val}')
         print(f'Start return value is: {val}')
         self.update_score()
