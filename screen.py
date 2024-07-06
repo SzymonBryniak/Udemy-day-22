@@ -67,20 +67,20 @@ class Game:
         self.text2.color('green')
         self.text2.hideturtle()
         self.text2.penup()
-        self.pad1score = 0
-        self.pad2score = 0
+
         pass
 
-    def update_score(self, score1=0, score2=0):
+    def update_score(self, val):
         self.text1.clear()
         self.text2.clear()
         self.text1.setpos(x=-56, y=200)
         self.text2.setpos(x=0, y=200)
-        self.text1.write(self.pad1score, move=True, align="left", font=("Verdana", 70, "normal",))
-        self.text2.write(self.pad2score, move=True, align="left", font=("Verdana", 70, "normal",))
+        self.text1.write(val[0], move=True, align="left", font=("Verdana", 70, "normal",))
+        self.text2.write(val[1], move=True, align="left", font=("Verdana", 70, "normal",))
 
-    def restart(self):
-        self.update_score()
+    def restart(self, ini_val):
+        self.update_score(ini_val)
+        screen.update()
         # user_input = prompt.textinput("NIM", "Would you like to continue?: ")
         user_input = input("Would you like to continue?: ")
         if user_input == 'Yes':
@@ -88,26 +88,25 @@ class Game:
             screen.update()  # ?
             val = self.ball.create_ball()
             print(f' ball returned: {val}')
-            self.pad1score = val[0]
-            self.pad2score = val[1]
-            self.restart()
+
+            self.restart(val)
         else:
             print('Game Over')
             return
 
     def start(self):
-        self.update_score()
+        val = [0, 0]
+        self.update_score(val)
         screen.onkeypress(pad1.up, key='Up')
         screen.onkeypress(pad1.down, key='Down')
         screen.onkeypress(pad2.up, key='w')
         screen.onkeypress(pad2.down, key='s')
         val = self.ball.create_ball()
-        self.pad1score = val[0]
-        self.pad2score = val[1]
         print(f' ball returned: {val}')
         print(f'Start return value is: {val}')
-        self.update_score()
-        self.restart()
+        self.update_score(list(val))
+        screen.update()
+        self.restart(list(val))
 
 
 game = Game()
