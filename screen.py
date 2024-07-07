@@ -29,30 +29,12 @@ screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.listen()
 prompt = Screen()
-middle = Turtle()
-
 pad1 = Paddle1(more_coordinates)
 pad2 = Paddle2(more_coordinates)
-
-
 
 # while not more_coordinates['game_on']:
 #     print('press the "UP" key to start the game')
 #     screen.onkeypress(ball.on(more_coordinates), key='Up')
-
-
-
-middle.hideturtle()
-middle.color('green')
-middle.setpos(x=0, y=300)
-middle.goto(x=0, y=-300)
-
-
-def start(self):
-    self.screen.textinput("NIM", "Would you like to continue?: ")
-    print(self.ball[0])
-    self.create_ball()
-    return
 
 
 class Game:
@@ -67,7 +49,11 @@ class Game:
         self.text2.color('green')
         self.text2.hideturtle()
         self.text2.penup()
-
+        self.middle = Turtle()
+        self.middle.hideturtle()
+        self.middle.color('green')
+        self.middle.setpos(x=0, y=300)
+        self.middle.goto(x=0, y=-300)
         pass
 
     def update_score(self, val):
@@ -108,21 +94,17 @@ class Game:
         screen.update()
         self.restart(list(val))
 
+    def middle(self): 
+        middle = Turtle()
+        middle.hideturtle()
+        middle.color('green')
+        middle.setpos(x=0, y=300)
+        middle.goto(x=0, y=-300)
+        pass
+
 
 game = Game()
 game.start()
 
-
-'''
-Collision evaluation
-'''
-######
-# wall = Wall(more_coordinates)
-# wall.wall_bounce_off_1()
-# screen.exitonclick()
-
-'''
-screen.listen()
-screen.onkey(pad1.up, "Up")
-screen.onkey(pad1.down, "Down")
-'''
+# To try more:
+# How objects from outside scope interact with objects from the inside scope

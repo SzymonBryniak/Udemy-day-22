@@ -37,7 +37,7 @@ class Ball:
         new_segment.goto(x=0, y=0)
         self.ball.insert(0, new_segment)
         print(self.ball)
-          # this may need to return something
+        # this may need to return something
         return self.top_left()
 
     def top_left(self):
@@ -53,7 +53,7 @@ class Ball:
         self.more_coordinates['ball']['ball_x'] = math.floor(self.ball[0].xcor())
         self.more_coordinates['ball']['ball_y'] = math.floor(self.ball[0].ycor())
         angle = int(self.pad_collision.core_bounce(self.more_coordinates))
-          # to return a value for the screen module
+        # to return a value for the screen module
         self.bounce_off_2(angle)
         return [self.pad1_score, self.pad2_score]
 
