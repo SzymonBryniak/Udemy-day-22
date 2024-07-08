@@ -54,6 +54,14 @@ class Game:
         self.middle.color('green')
         self.middle.setpos(x=0, y=300)
         self.middle.goto(x=0, y=-300)
+        self.mid = self.middle
+        pass
+
+    def middle(self):
+        self.middle.hideturtle()
+        self.middle.color('green')
+        self.middle.setpos(x=0, y=300)
+        self.middle.goto(x=0, y=-300)
         pass
 
     def update_score(self, val):
@@ -71,10 +79,9 @@ class Game:
         user_input = input("Would you like to continue?: ")
         if user_input == 'Yes':
             self.ball.ball[0].reset()
-            screen.update()  # ?
+            # screen.update()  # ? was not disabled
             val = self.ball.create_ball()
             print(f' ball returned: {val}')
-
             self.restart(val)
         else:
             print('Game Over')
@@ -94,17 +101,11 @@ class Game:
         screen.update()
         self.restart(list(val))
 
-    def middle(self): 
-        middle = Turtle()
-        middle.hideturtle()
-        middle.color('green')
-        middle.setpos(x=0, y=300)
-        middle.goto(x=0, y=-300)
-        pass
+
 
 
 game = Game()
 game.start()
 
 # To try more:
-# How objects from outside scope interact with objects from the inside scope
+# How objects from the outside scope interact with objects from the inside scope
