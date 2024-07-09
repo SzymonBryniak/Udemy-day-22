@@ -29,8 +29,7 @@ screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.listen()
 prompt = Screen()
-pad1 = Paddle1(more_coordinates)
-pad2 = Paddle2(more_coordinates)
+
 
 # while not more_coordinates['game_on']:
 #     print('press the "UP" key to start the game')
@@ -39,6 +38,8 @@ pad2 = Paddle2(more_coordinates)
 
 class Game:
     def __init__(self):
+        self.pad1 = Paddle1(more_coordinates)
+        self.pad2 = Paddle2(more_coordinates)
         self.coordinates = more_coordinates
         self.ball = Ball(more_coordinates)
         self.text1 = Turtle()
@@ -79,6 +80,7 @@ class Game:
         user_input = input("Would you like to continue?: ")
         if user_input == 'Yes':
             self.ball.ball[0].reset()
+
             # screen.update()  # ? was not disabled
             val = self.ball.create_ball()
             print(f' ball returned: {val}')
@@ -90,18 +92,16 @@ class Game:
     def start(self):
         val = [0, 0]
         self.update_score(val)
-        screen.onkeypress(pad1.up, key='Up')
-        screen.onkeypress(pad1.down, key='Down')
-        screen.onkeypress(pad2.up, key='w')
-        screen.onkeypress(pad2.down, key='s')
+        screen.onkeypress(self.pad1.up, key='Up')
+        screen.onkeypress(self.pad1.down, key='Down')
+        screen.onkeypress(self.pad2.up, key='w')
+        screen.onkeypress(self.pad2.down, key='s')
         val = self.ball.create_ball()
         print(f' ball returned: {val}')
         print(f'Start return value is: {val}')
         self.update_score(list(val))
         screen.update()
         self.restart(list(val))
-
-
 
 
 game = Game()

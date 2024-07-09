@@ -1,5 +1,5 @@
 from turtle import Turtle, Screen
-STARTING_POSITIONS = [(-280, 20), (-280, 0), (-280, -20)]
+STARTING_POSITIONS2 = [(-280, 20), (-280, 0), (-280, -20)]
 UP = 90
 DOWN = 270
 LEFT = 180
@@ -20,8 +20,11 @@ class Paddle2:
         # self.screen.onkeypress(self.up, "w")
         # self.screen.onkeypress(self.down, "s")
 
+    def reset_pads(self):
+        pass
+
     def create_pad2(self):
-        for position in STARTING_POSITIONS:
+        for position in STARTING_POSITIONS2:
             self.add_segment(position)
 
     def add_segment(self, position):

@@ -1,7 +1,7 @@
 from turtle import Turtle, Screen
 from paddle_collision import PadCollision
 # from screen import coordinates # circular import error
-STARTING_POSITIONS = [(280, 20), (280, 0), (280, -20)]
+STARTING_POSITIONS1 = [(280, 20), (280, 0), (280, -20)]
 UP = 90
 DOWN = 270
 LEFT = 180
@@ -20,7 +20,7 @@ class Paddle1:
         self.create_pad1()
 
     def create_pad1(self):
-        for position in STARTING_POSITIONS:
+        for position in STARTING_POSITIONS1:
             self.add_segment(position)
 
     def add_segment(self, position):
