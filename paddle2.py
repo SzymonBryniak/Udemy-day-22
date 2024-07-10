@@ -20,8 +20,11 @@ class Paddle2:
         # self.screen.onkeypress(self.up, "w")
         # self.screen.onkeypress(self.down, "s")
 
-    def reset_pads(self):
-        pass
+    def reset_pad2(self):
+        val = 0
+        for position in STARTING_POSITIONS2:
+            self.pad2[val].goto(position)
+            val += 1
 
     def create_pad2(self):
         for position in STARTING_POSITIONS2:

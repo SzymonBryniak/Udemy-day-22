@@ -19,6 +19,12 @@ class Paddle1:
         self.pad1 = []
         self.create_pad1()
 
+    def reset_pad1(self):
+        val = 0
+        for position in STARTING_POSITIONS1:
+            self.pad1[val].goto(position)
+            val += 1
+
     def create_pad1(self):
         for position in STARTING_POSITIONS1:
             self.add_segment(position)

@@ -80,7 +80,8 @@ class Game:
         user_input = input("Would you like to continue?: ")
         if user_input == 'Yes':
             self.ball.ball[0].reset()
-
+            self.pad1.reset_pad1()
+            self.pad2.reset_pad2()
             # screen.update()  # ? was not disabled
             val = self.ball.create_ball()
             print(f' ball returned: {val}')
