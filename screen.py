@@ -60,7 +60,6 @@ class Game:
 
     def middle(self):
         self.middle.hideturtle()
-        self.middle.color('green')
         self.middle.setpos(x=0, y=300)
         self.middle.goto(x=0, y=-300)
         pass

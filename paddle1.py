@@ -34,6 +34,7 @@ class Paddle1:
         new_segment.color('green')
         new_segment.penup()
         new_segment.goto(position)
+        new_segment.turtlesize(0.5)
         self.pad1.append(new_segment)
 
     def up(self):
