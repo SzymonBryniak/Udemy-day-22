@@ -6,10 +6,11 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
-FORWARD = 20
+FORWARD = 10
+FORWARD_while = 0.004
 PADDLE_TRACER = 31
 # PAD1_COORDINATES = [0, 0, 0, 0]
-ts = 10
+ts = 10000
 
 
 class Paddle1:
@@ -34,7 +35,7 @@ class Paddle1:
         new_segment.color('green')
         new_segment.penup()
         new_segment.goto(position)
-        new_segment.turtlesize(0.5)
+        new_segment.turtlesize(1)
         self.pad1.append(new_segment)
 
     def up(self):

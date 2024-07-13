@@ -4,9 +4,10 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
-FORWARD = 20
+FORWARD = 10
+FORWARD_while = 0.01
 PADDLE_TRACER = 31
-ts = 10
+ts = 10000
 
 
 class Paddle2:
@@ -35,10 +36,10 @@ class Paddle2:
         new_segment.color('green')
         new_segment.penup()
         new_segment.goto(position)
-        new_segment.turtlesize(0.5)
+        new_segment.turtlesize(1)
         self.pad2.append(new_segment)
 
-    def up(self):
+    def up(self):  # I may use the ball movement mechanism to control pads
         # self.screen.listen()
         self.screen.tracer(PADDLE_TRACER)
         self.pad2[0].speed(ts)
@@ -81,4 +82,22 @@ class Paddle2:
         # print(self.pad2[0].xcor(), self.pad2[0].ycor())
         return
 
+    def up_while(self, stop_val=1):
+        self.screen.tracer(PADDLE_TRACER)
+        if stop_val == 1:
+            self.pad2[0].setheading(UP)
+            self.pad2[1].setheading(UP)
+            self.pad2[2].setheading(UP)
+        while stop_val or self.pad2[0].ycor() == 260:
+            self.pad2[0].forward(FORWARD_while)
+            self.pad2[1].forward(FORWARD_while)
+            self.pad2[2].forward(FORWARD_while)
+            # if stop_val == 0:
+            #     return
+
+    def release_up(self, val):
+        print(val)
+        return
+    # turtle.onkey(fun, key)
+    # turtle.onkeyrelease(fun, key)¶
 

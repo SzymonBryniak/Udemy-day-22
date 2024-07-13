@@ -103,9 +103,25 @@ class Game:
         screen.update()
         self.restart(list(val))
 
+    def start2(self):
+        val = [0, 0]
+        self.update_score(val)
+        screen.onkeypress(self.pad1.up, key='Up')
+        screen.onkeypress(self.pad1.down, key='Down')
+        screen.onkeypress(self.pad2.up_while(1), key='w')
+        screen.onkey(self.pad2.up_while(0), key='w')
+        # screen.onkeyrelease(self.pad2.release_up(1), key='Up')
+        screen.onkeypress(self.pad2.down, key='s')
+        val = self.ball.create_ball()
+        print(f' ball returned: {val}')
+        print(f'Start return value is: {val}')
+        self.update_score(list(val))
+        screen.update()
+        self.restart(list(val))
+
 
 game = Game()
 game.start()
 
 # To try more:
-# How objects from the outside scope interact with objects from the inside scope
+# How objects from the outside scope interact with objects from the inside scope.
