@@ -5,7 +5,7 @@ DOWN = 270
 LEFT = 180
 RIGHT = 0
 FORWARD = 10
-FORWARD_while = 0.004
+FORWARD_while = 0.01
 PADDLE_TRACER = 31
 ts = 10000
 
@@ -89,6 +89,7 @@ class Paddle2:
         self.pad2[2].setheading(UP)
         move_to = self.pad2[0].ycor() + 10
         while self.pad2[0].ycor() < move_to:
+
             self.pad2[0].forward(FORWARD_while)
             self.pad2[1].forward(FORWARD_while)
             self.pad2[2].forward(FORWARD_while)

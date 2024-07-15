@@ -2,6 +2,8 @@ from turtle import Screen, Turtle
 from paddle1 import Paddle1
 from paddle2 import Paddle2
 from ball import Ball
+from threading import Thread
+
 from wall_collision import Wall
 
 more_coordinates = {'object': False, 'score': {'pad1': 1, 'pad2': 0}, 'ball': {'ball_x': 0, 'ball_y': 0, 'ball_s': 0},
@@ -36,8 +38,9 @@ prompt = Screen()
 #     screen.onkeypress(ball.on(more_coordinates), key='Up')
 
 
-class Game:
+class Game(Thread):
     def __init__(self):
+        super().__init__()
         self.pad1 = Paddle1(more_coordinates)
         self.pad2 = Paddle2(more_coordinates)
         self.coordinates = more_coordinates
@@ -56,7 +59,6 @@ class Game:
         self.middle.setpos(x=0, y=300)
         self.middle.goto(x=0, y=-300)
         self.mid = self.middle
-        pass
 
     def middle(self):
         self.middle.hideturtle()
@@ -120,9 +122,17 @@ class Game:
         screen.update()
         self.restart(list(val))
 
+    def pad_thread(self):
+        th1 = screen.onkeypress(self.pad1.up, key='Up')
+        th2 = screen.onkeypress(self.pad1.down, key='Down')
+        th3 = screen.onkeypress(self.pad2.up_while, key='w')
+        th4 = screen.onkeypress(self.pad2.down, key='s')
+        
+        return
+
 
 game = Game()
-game.start()
+game.start2()
 
 # To try more:
 # How objects from the outside scope interact with objects from the inside scope.
