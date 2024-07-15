@@ -74,6 +74,8 @@ class Game:
 
     def restart(self, ini_val):
         self.update_score(ini_val)
+        self.middle.setpos(x=0, y=300)
+        self.middle.goto(x=0, y=-300)
         screen.update()
         # user_input = prompt.textinput("NIM", "Would you like to continue?: ")
         user_input = input("Would you like to continue?: ")
@@ -108,9 +110,8 @@ class Game:
         self.update_score(val)
         screen.onkeypress(self.pad1.up, key='Up')
         screen.onkeypress(self.pad1.down, key='Down')
-        screen.onkeypress(self.pad2.up_while(1), key='w')
-        screen.onkey(self.pad2.up_while(0), key='w')
-        # screen.onkeyrelease(self.pad2.release_up(1), key='Up')
+
+        screen.onkeypress(self.pad2.up_while, key='w')
         screen.onkeypress(self.pad2.down, key='s')
         val = self.ball.create_ball()
         print(f' ball returned: {val}')
