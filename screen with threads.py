@@ -2,7 +2,7 @@ from turtle import Screen, Turtle
 from paddle1 import Paddle1
 from paddle2 import Paddle2
 from ball import Ball
-from threading import Thread
+import threading
 
 from wall_collision import Wall
 
@@ -38,9 +38,9 @@ prompt = Screen()
 #     screen.onkeypress(ball.on(more_coordinates), key='Up')
 
 
-class Game(Thread):
+class Game:
     def __init__(self):
-        super().__init__()
+        self.th = threading
         self.pad1 = Paddle1(more_coordinates)
         self.pad2 = Paddle2(more_coordinates)
         self.coordinates = more_coordinates
@@ -59,6 +59,10 @@ class Game(Thread):
         self.middle.setpos(x=0, y=300)
         self.middle.goto(x=0, y=-300)
         self.mid = self.middle
+
+    def settings(self):
+
+        return
 
     def middle(self):
         self.middle.hideturtle()
@@ -94,13 +98,17 @@ class Game(Thread):
             return
 
     def start(self):
+        coordinates = more_coordinates
+        pad1 = Paddle1(more_coordinates)
+        pad2 = Paddle2(more_coordinates)
+        ball = Ball(more_coordinates)
         val = [0, 0]
         self.update_score(val)
-        screen.onkeypress(self.pad1.up, key='Up')
-        screen.onkeypress(self.pad1.down, key='Down')
-        screen.onkeypress(self.pad2.up, key='w')
-        screen.onkeypress(self.pad2.down, key='s')
-        val = self.ball.create_ball()
+        screen.onkeypress(pad1.up, key='Up')
+        screen.onkeypress(pad1.down, key='Down')
+        screen.onkeypress(pad2.up, key='w')
+        screen.onkeypress(pad2.down, key='s')
+        val = ball.create_ball()
         print(f' ball returned: {val}')
         print(f'Start return value is: {val}')
         self.update_score(list(val))
@@ -110,12 +118,13 @@ class Game(Thread):
     def start2(self):
         val = [0, 0]
         self.update_score(val)
-        screen.onkeypress(self.pad1.up, key='Up')
-        screen.onkeypress(self.pad1.down, key='Down')
-
-        screen.onkeypress(self.pad2.up_while, key='w')
-        screen.onkeypress(self.pad2.down, key='s')
-        val = self.ball.create_ball()
+        # screen.onkeypress(self.pad1.up, key='Up')
+        # screen.onkeypress(self.pad1.down, key='Down')
+        # screen.onkeypress(self.pad2.up_while, key='w')
+        # screen.onkeypress(self.pad2.down, key='s')
+        self.pad_thread()
+        th0 = threading.Thread(target=self.ball.create_ball())
+        th0.start()
         print(f' ball returned: {val}')
         print(f'Start return value is: {val}')
         self.update_score(list(val))
@@ -123,16 +132,19 @@ class Game(Thread):
         self.restart(list(val))
 
     def pad_thread(self):
-        th1 = screen.onkeypress(self.pad1.up, key='Up')
-        th2 = screen.onkeypress(self.pad1.down, key='Down')
-        th3 = screen.onkeypress(self.pad2.up_while, key='w')
-        th4 = screen.onkeypress(self.pad2.down, key='s')
-        
+        th1 = threading.Thread(target=screen.onkeypress(self.pad1.up, key='Up'))
+        th2 = threading.Thread(target=screen.onkeypress(self.pad1.down, key='Down'))
+        th3 = threading.Thread(target=screen.onkeypress(self.pad2.up_while, key='w'))
+        th4 = threading.Thread(target=screen.onkeypress(self.pad2.down, key='s'))
+        th1.start()
+        th2.start()
+        th3.start()
+        th4.start()
         return
 
 
 game = Game()
-game.start2()
+game.start2()  # change to start() to run the closest to working as it should code.
 
 # To try more:
 # How objects from the outside scope interact with objects from the inside scope.
