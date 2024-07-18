@@ -3,6 +3,7 @@ from paddle1 import Paddle1
 from paddle2 import Paddle2
 from ball import Ball
 import threading
+from threading import Thread
 
 from wall_collision import Wall
 
@@ -118,33 +119,33 @@ class Game:
     def start2(self):
         val = [0, 0]
         self.update_score(val)
+        th01 = threading.Thread(target=self.pad_thread())
+        th01.start()
         # screen.onkeypress(self.pad1.up, key='Up')
         # screen.onkeypress(self.pad1.down, key='Down')
         # screen.onkeypress(self.pad2.up_while, key='w')
         # screen.onkeypress(self.pad2.down, key='s')
-        self.pad_thread()
-        th0 = threading.Thread(target=self.ball.create_ball())
-        th0.start()
+        # self.pad_thread()
+        # ball = self.ball.create_ball
+        th02 = threading.Thread(target=self.ball.create_ball())
+        th02.start()
         print(f' ball returned: {val}')
         print(f'Start return value is: {val}')
         self.update_score(list(val))
+        # th03 = threading.Thread(target=self.update_score(list(val)))
         screen.update()
         self.restart(list(val))
 
     def pad_thread(self):
-        th1 = threading.Thread(target=screen.onkeypress(self.pad1.up, key='Up'))
-        th2 = threading.Thread(target=screen.onkeypress(self.pad1.down, key='Down'))
-        th3 = threading.Thread(target=screen.onkeypress(self.pad2.up_while, key='w'))
-        th4 = threading.Thread(target=screen.onkeypress(self.pad2.down, key='s'))
-        th1.start()
-        th2.start()
-        th3.start()
-        th4.start()
+        screen.onkeypress(self.pad1.up, key='Up')
+        screen.onkeypress(self.pad1.down, key='Down')
+        screen.onkeypress(self.pad2.up_while, key='w')
+        screen.onkeypress(self.pad2.down, key='s')
         return
 
 
 game = Game()
-game.start2()  # change to start() to run the closest to working as it should code.
+game.start()  # change to start() to run the closest to working as it should code.
 
 # To try more:
 # How objects from the outside scope interact with objects from the inside scope.

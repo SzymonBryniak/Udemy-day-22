@@ -59,8 +59,6 @@ class Game:
         self.middle.setpos(x=0, y=300)
         self.middle.goto(x=0, y=-300)
         self.mid = self.middle
-    def settings(self):
-
 
     def middle(self):
         self.middle.hideturtle()
@@ -112,33 +110,24 @@ class Game:
     def start2(self):
         val = [0, 0]
         self.update_score(val)
-        # screen.onkeypress(self.pad1.up, key='Up')
-        # screen.onkeypress(self.pad1.down, key='Down')
-        # screen.onkeypress(self.pad2.up_while, key='w')
-        # screen.onkeypress(self.pad2.down, key='s')
-        self.pad_thread()
-        th0 = threading.Thread(target=self.ball.create_ball())
-        th0.start()
+        self.pads()
+        self.ball.create_ball()
         print(f' ball returned: {val}')
         print(f'Start return value is: {val}')
         self.update_score(list(val))
         screen.update()
         self.restart(list(val))
 
-    def pad_thread(self):
-        th1 = threading.Thread(target=screen.onkeypress(self.pad1.up, key='Up'))
-        th2 = threading.Thread(target=screen.onkeypress(self.pad1.down, key='Down'))
-        th3 = threading.Thread(target=screen.onkeypress(self.pad2.up_while, key='w'))
-        th4 = threading.Thread(target=screen.onkeypress(self.pad2.down, key='s'))
-        th1.start()
-        th2.start()
-        th3.start()
-        th4.start()
+    def pads(self):
+        screen.onkeypress(self.pad1.up, key='Up')
+        screen.onkeypress(self.pad1.down, key='Down')
+        screen.onkeypress(self.pad2.up, key='w')
+        screen.onkeypress(self.pad2.down, key='s')
         return
 
 
 game = Game()
-game.start2()  # change to start() to run the closest to working as it should code.
+game.start()  # change to start() to run the closest to working as it should code.
 
 # To try more:
 # How objects from the outside scope interact with objects from the inside scope.
