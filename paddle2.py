@@ -1,4 +1,5 @@
 from turtle import Turtle, Screen
+from threading import Thread
 STARTING_POSITIONS2 = [(-280, 20), (-280, 0), (-280, -20)]
 UP = 90
 DOWN = 270
@@ -10,8 +11,9 @@ PADDLE_TRACER = 31
 ts = 10000
 
 
-class Paddle2:
+class Paddle2(Thread):
     def __init__(self, more_coordinates):
+        super().__init__()
         self.more_coordinates = more_coordinates
         self.screen = Screen()
         self.pad2 = []
@@ -97,9 +99,6 @@ class Paddle2:
             #     return
         return
 
-    def release_up(self, val):
-        print(val)
-        return
     # turtle.onkey(fun, key)
     # turtle.onkeyrelease(fun, key)¶
 

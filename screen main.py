@@ -26,7 +26,7 @@ more_coordinates = {'object': False, 'score': {'pad1': 1, 'pad2': 0}, 'ball': {'
                     }
 game_on = False
 screen = Screen()
-
+# TODO: to find out if the screen module is causing the issue with interrupted animation
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.listen()

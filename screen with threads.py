@@ -3,7 +3,6 @@ from paddle1 import Paddle1
 from paddle2 import Paddle2
 from ball import Ball
 import threading
-from threading import Thread
 
 from wall_collision import Wall
 
@@ -26,11 +25,11 @@ more_coordinates = {'object': False, 'score': {'pad1': 1, 'pad2': 0}, 'ball': {'
                     }
                     }
 game_on = False
-screen = Screen()
-
-screen.setup(width=600, height=600)
-screen.bgcolor("black")
-screen.listen()
+screen1 = Screen()
+screen2 = Screen()
+# # TODO: to find out if the screen module is causing the issue with interrupted animation
+screen1.setup(width=600, height=600)
+screen1.bgcolor("black")
 prompt = Screen()
 
 
@@ -61,10 +60,6 @@ class Game:
         self.middle.goto(x=0, y=-300)
         self.mid = self.middle
 
-    def settings(self):
-
-        return
-
     def middle(self):
         self.middle.hideturtle()
         self.middle.setpos(x=0, y=300)
@@ -83,7 +78,7 @@ class Game:
         self.update_score(ini_val)
         self.middle.setpos(x=0, y=300)
         self.middle.goto(x=0, y=-300)
-        screen.update()
+        screen1.update()
         # user_input = prompt.textinput("NIM", "Would you like to continue?: ")
         user_input = input("Would you like to continue?: ")
         if user_input == 'Yes':
@@ -99,48 +94,37 @@ class Game:
             return
 
     def start(self):
-        coordinates = more_coordinates
-        pad1 = Paddle1(more_coordinates)
-        pad2 = Paddle2(more_coordinates)
-        ball = Ball(more_coordinates)
         val = [0, 0]
         self.update_score(val)
-        screen.onkeypress(pad1.up, key='Up')
-        screen.onkeypress(pad1.down, key='Down')
-        screen.onkeypress(pad2.up, key='w')
-        screen.onkeypress(pad2.down, key='s')
-        val = ball.create_ball()
+        screen1.listen()
+        screen2.listen()
+        screen1.onkeypress(self.pad1.up, key='Up')
+        screen1.onkeypress(self.pad1.down, key='Down')
+        screen2.onkeypress(self.pad2.up, key='w')
+        screen2.onkeypress(self.pad2.down, key='s')
+        val = self.ball.create_ball()
         print(f' ball returned: {val}')
         print(f'Start return value is: {val}')
         self.update_score(list(val))
-        screen.update()
+        screen1.update()
         self.restart(list(val))
 
     def start2(self):
         val = [0, 0]
         self.update_score(val)
-        th01 = threading.Thread(target=self.pad_thread())
-        th01.start()
-        # screen.onkeypress(self.pad1.up, key='Up')
-        # screen.onkeypress(self.pad1.down, key='Down')
-        # screen.onkeypress(self.pad2.up_while, key='w')
-        # screen.onkeypress(self.pad2.down, key='s')
-        # self.pad_thread()
-        # ball = self.ball.create_ball
-        th02 = threading.Thread(target=self.ball.create_ball())
-        th02.start()
+        self.pads()
+        self.ball.create_ball()
         print(f' ball returned: {val}')
         print(f'Start return value is: {val}')
         self.update_score(list(val))
-        # th03 = threading.Thread(target=self.update_score(list(val)))
-        screen.update()
+        screen1.update()
         self.restart(list(val))
 
-    def pad_thread(self):
-        screen.onkeypress(self.pad1.up, key='Up')
-        screen.onkeypress(self.pad1.down, key='Down')
-        screen.onkeypress(self.pad2.up_while, key='w')
-        screen.onkeypress(self.pad2.down, key='s')
+    def pads(self):
+        screen1.onkeypress(self.pad1.up, key='Up')
+        screen1.onkeypress(self.pad1.down, key='Down')
+        screen1.onkeypress(self.pad2.up, key='w')
+        screen1.onkeypress(self.pad2.down, key='s')
         return
 
 
