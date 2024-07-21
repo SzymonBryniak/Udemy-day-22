@@ -41,6 +41,14 @@ class Paddle2(Thread):
         new_segment.turtlesize(1)
         self.pad2.append(new_segment)
 
+    def pad2_coordinates(self):
+        self.more_coordinates['pad2']['p2x'] = self.pad2[0].xcor()
+        self.more_coordinates['pad2']['p2y'] = self.pad2[0].ycor()
+        self.more_coordinates['pad2']['p2x1'] = self.pad2[1].xcor()
+        self.more_coordinates['pad2']['p2y1'] = self.pad2[1].ycor()
+        self.more_coordinates['pad2']['p2x2'] = self.pad2[2].xcor()
+        self.more_coordinates['pad2']['p2y2'] = self.pad2[2].ycor()
+
     def up(self):  # I may use the ball movement mechanism to control pads
         # self.screen.listen()
         self.screen.tracer(PADDLE_TRACER)
@@ -89,12 +97,13 @@ class Paddle2(Thread):
         self.pad2[0].setheading(UP)
         self.pad2[1].setheading(UP)
         self.pad2[2].setheading(UP)
-        move_to = self.pad2[0].ycor() + 10
+        move_to = int(self.pad2[0].ycor() + 20)
         while self.pad2[0].ycor() < move_to:
 
             self.pad2[0].forward(FORWARD_while)
             self.pad2[1].forward(FORWARD_while)
             self.pad2[2].forward(FORWARD_while)
+            self.pad2_coordinates()
             # if stop_val == 0:
             #     return
         return

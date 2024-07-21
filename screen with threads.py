@@ -98,10 +98,14 @@ class Game:
         self.update_score(val)
         screen1.listen()
         screen2.listen()
-        screen1.onkeypress(self.pad1.up, key='Up')
-        screen1.onkeypress(self.pad1.down, key='Down')
-        screen2.onkeypress(self.pad2.up, key='w')
-        screen2.onkeypress(self.pad2.down, key='s')
+        # screen1.onkeypress(self.pad1.up, key='Up')
+        # screen1.onkeypress(self.pad1.down, key='Down')
+        # screen2.onkeypress(self.pad2.up, key='w')
+        # screen2.onkeypress(self.pad2.down, key='s')
+        pad1_thread = threading.Thread(target=self.pad1_control())
+        pad2_thread = threading.Thread(target=self.pad2_control())
+        pad1_thread.start()
+        pad2_thread.start()
         val = self.ball.create_ball()
         print(f' ball returned: {val}')
         print(f'Start return value is: {val}')
@@ -129,7 +133,7 @@ class Game:
         return
 
     def pad2_control(self):
-        screen2.onkeypress(self.pad2.up, key='w')
+        screen2.onkeypress(self.pad2.up_while, key='w')
         screen2.onkeypress(self.pad2.down, key='s')
         return
 

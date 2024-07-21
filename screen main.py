@@ -121,7 +121,7 @@ class Game:
     def pads(self):
         screen.onkeypress(self.pad1.up, key='Up')
         screen.onkeypress(self.pad1.down, key='Down')
-        screen.onkeypress(self.pad2.up, key='w')
+        screen.onkeypress(self.pad2.up_while, key='w')
         screen.onkeypress(self.pad2.down, key='s')
         return
 

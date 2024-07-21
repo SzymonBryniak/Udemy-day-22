@@ -7,5 +7,6 @@ db = mysql.connect(
 	host="localhost",
 	user="root",
 	passwd="dbms"
+
 )
 print(db)  # it will print a connection object if everything is fine
